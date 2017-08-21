@@ -1,6 +1,6 @@
-epochs = 30
-mini_batch_size = 15
+epochs = 10
+mini_batch_size = 30
 eta = 1
-lmbda = 10
+lmbda = 1
 eval_treshold = 0.1
-architecture = [4096, 10, 1]
+architecture = [4096, 40, 1]
