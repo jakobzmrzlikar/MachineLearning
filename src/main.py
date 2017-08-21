@@ -59,6 +59,29 @@ class Network(object):
             else:
                 print("Epoch {} complete".format(i))
 
+        # Advanced monitoring functions
+        evaluation_cost, evaluation_accuracy = [], []
+        training_cost, training_accuracy = [], []
+
+        if monitor_training_cost:
+                cost = self.total_cost(training_data, lmbda)
+                training_cost.append(cost)
+                print("Cost on training data: {}".format(cost))
+        if monitor_training_accuracy:
+            accuracy = self.accuracy(training_data, convert=True)
+            training_accuracy.append(accuracy)
+            print("Accuracy on training data: {} / {}".format(accuracy, n))
+        if monitor_evaluation_cost:
+            cost = self.total_cost(evaluation_data, lmbda, convert=True)
+            evaluation_cost.append(cost)
+            print("Cost on evaluation data: {}".format(cost))
+        if monitor_evaluation_accuracy:
+            accuracy = self.accuracy(evaluation_data)
+            evaluation_accuracy.append(accuracy)
+            print("Accuracy on evaluation data: {} / {}".format(self.accuracy(evaluation_data), n_data))
+
+        return evaluation_cost, evaluation_accuracy, training_cost, training_accuracy
+
     def update_mini_batch(self, mini_batch):
         nabla_b = [np.zeros(b.shape) for b in self.biases]
         nabla_w = [np.zeros(w.shape) for w in self.weights]
@@ -81,6 +104,17 @@ class Network(object):
         i=0
         for w, b in zip(self.weights, self.biases):
             z = np.dot(w, a) + b
+            # for i in z:
+            #     if i > 5:
+            #         print(i)
+            #         print()
+            #         for j in b:
+            #             if j > 0.5: print(j)
+            #         print()
+            #         for j in w:
+            #             for k in j:
+            #                 if k > 0.1: print(k)
+            #         sys.exit(0)
             z_list.append(z)
             #if i != self.num_layers-2:
             a = sigmoid(z)
@@ -108,8 +142,22 @@ class Network(object):
         test_results = [(self.feedforward(x), y) for (x, y) in test_data]
         return sum(int(round(x[0][0])==y) for (x, y) in test_results)
 
+    def total_cost(self, data, lmbda):
+        """Return the total cost for the data set ``data``.  The flag
+        ``convert`` should be set to False if the data set is the
+        training data (the usual case), and to True if the data set is
+        the validation or test data.  See comments on the similar (but
+        reversed) convention for the ``accuracy`` method, above.
+        """
+        cost = 0.0
+        for x, y in data:
+            a = self.feedforward(x)
+            cost += self.cost.fn(a, y)/len(data)
+            cost += 0.5*(lmbda/len(data))*sum(np.linalg.norm(w)**2 for w in self.weights) # '**' - to the power of.
+        return cost
+
 if __name__  == '__main__':
-    train_data = np.load('../train_data.npy')
-    test_data = np.load('../test_data.npy')
-    klemen = Network(architecture)
-    klemen.SGD(train_data, test_data=test_data)
+    train_data = np.load('../data/train_data.npy')
+    test_data = np.load('../data/test_data.npy')
+    net = Network(architecture)
+    net.SGD(train_data, test_data=test_data)
