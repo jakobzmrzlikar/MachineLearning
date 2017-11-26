@@ -1,2 +1,2 @@
-# NeuralNetwork
-A repository of my neural networks
+# MachineLearning
+A repository of my machine learning algorithms.
