@@ -1,0 +1,75 @@
+mport matplotlib.pyplot as plt
+
+class QuadraticCost():
+
+    @staticmethod
+    def cost(a, y):
+        return(0.5*(a-y)**2)
+
+    @staticmethod
+    def error_b(a, y):
+        return(a-y)
+
+    @staticmethod
+    def error_w(a, x, y):
+        return((a-y)*x)
+
+class MeanNormalization():
+    @staticmethod
+    def normalize(training_data):
+        avg = sum(i for i, _ in training_data)/len(training_data)
+        return([((x-avg), y) for x,y in training_data])
+
+    @staticmethod
+    def scale(training_data):
+        scale = max(training_data)[0] - min(training_data)[0]
+        return([((x/scale), y) for x,y in training_data])
+
+class MultivariateLinearRegression():
+    def __init__(self, size, cost_function=QuadraticCost):
+        self.size = size
+        self.w = [0 for i in range(size)]
+        self.cost_function = cost_function
+
+    def __call__(self, x):
+        return(sum([self.w[i] * x[i] for i in range(self.size)]))
+
+    def train(self, training_data, learinig_rate=0.1, epochs=1000, normalization=MeanNormalization):
+        m = len(training_data)
+
+        training_data = normalization.normalize(training_data)
+
+        cost = [sum([self.cost_function.cost(self(x), y) for x,y in training_data]) / m]
+
+        for i in range(epochs):
+            nabla_w = sum([self.cost_function.error_w(self(x), x, y) for x,y in training_data])
+
+            self.w -= learinig_rate / m * nabla_w
+            cost.append(sum([self.cost_function.cost(self(x), y) for x,y in training_data]) / m)
+
+        return cost
+
+if __name__ == "__main__":
+    h = MultivariateLinearRegression()
+
+    cost = h.train(training_data)
+
+    n = training_data[0][0]
+    k = training_data[-1][0]+5
+    avg = sum(i for i, _ in training_data)/len(training_data)
+
+    points = [(x, y) for x,y in training_data]
+
+    f = plt.figure("Hypothesis")
+    plt.xlabel("x")
+    plt.ylabel("h(x)")
+    plt.scatter(*zip(*points), color="red")
+    #input must be normalized for function to work properly
+    plt.plot(range(n, k+1), [h(i-avg) for i in range(n, k+1)])
+    plt.axis([n-1, k+1, 0, 100])
+
+    g = plt.figure("Cost")
+    plt.xlabel("epochs")
+    plt.plot(cost)
+
+    plt.show()
