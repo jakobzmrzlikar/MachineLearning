@@ -4,9 +4,9 @@ import sys
 import numpy as np
 from tqdm import tqdm
 
-from cost import QuadraticCost, CrossEntropyCost
-from functions import sigmoid, sigmoid_prime, softmax
-from parameters import epochs, mini_batch_size, eta, lmbda, eval_treshold, architecture
+from functions.cost import QuadraticCost, CrossEntropyCost
+from functions.functions import sigmoid, sigmoid_prime, softmax
+from functions.parameters import epochs, mini_batch_size, eta, lmbda, eval_treshold, architecture
 
 class Network(object):
 
