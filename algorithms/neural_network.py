@@ -6,7 +6,7 @@ from tqdm import tqdm
 
 from cost import QuadraticCost, CrossEntropyCost
 from functions import sigmoid, sigmoid_prime, softmax
-from constants import epochs, mini_batch_size, eta, lmbda, eval_treshold, architecture
+from parameters import epochs, mini_batch_size, eta, lmbda, eval_treshold, architecture
 
 class Network(object):
 
