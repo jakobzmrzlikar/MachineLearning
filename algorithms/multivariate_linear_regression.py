@@ -1,5 +1,3 @@
-mport matplotlib.pyplot as plt
-
 class QuadraticCost():
 
     @staticmethod
@@ -26,6 +24,7 @@ class MeanNormalization():
         return([((x/scale), y) for x,y in training_data])
 
 class MultivariateLinearRegression():
+
     def __init__(self, size, cost_function=QuadraticCost):
         self.size = size
         self.w = [0 for i in range(size)]
@@ -42,34 +41,14 @@ class MultivariateLinearRegression():
         cost = [sum([self.cost_function.cost(self(x), y) for x,y in training_data]) / m]
 
         for i in range(epochs):
-            nabla_w = sum([self.cost_function.error_w(self(x), x, y) for x,y in training_data])
+            # computes the gradients for each weight
+            for j in range(len(self.w)):
+                nabla_w[j] = sum([self.cost_function.error_w(self(x), x[j], y) for x,y in training_data])
 
-            self.w -= learinig_rate / m * nabla_w
+            # updates the weights according to their gradients
+            for j in range(len(self.w)):
+                self.w[j] -= learinig_rate / m * nabla_w[j]
+
             cost.append(sum([self.cost_function.cost(self(x), y) for x,y in training_data]) / m)
 
         return cost
-
-if __name__ == "__main__":
-    h = MultivariateLinearRegression()
-
-    cost = h.train(training_data)
-
-    n = training_data[0][0]
-    k = training_data[-1][0]+5
-    avg = sum(i for i, _ in training_data)/len(training_data)
-
-    points = [(x, y) for x,y in training_data]
-
-    f = plt.figure("Hypothesis")
-    plt.xlabel("x")
-    plt.ylabel("h(x)")
-    plt.scatter(*zip(*points), color="red")
-    #input must be normalized for function to work properly
-    plt.plot(range(n, k+1), [h(i-avg) for i in range(n, k+1)])
-    plt.axis([n-1, k+1, 0, 100])
-
-    g = plt.figure("Cost")
-    plt.xlabel("epochs")
-    plt.plot(cost)
-
-    plt.show()
