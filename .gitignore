@@ -10,9 +10,6 @@ __pycache__
 # vim recovery files
 *.swp
 
-# generated data files
-data
-
 # raw data files
 train
 test
