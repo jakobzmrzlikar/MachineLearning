@@ -9,9 +9,3 @@ __pycache__
 
 # vim recovery files
 *.swp
-
-# raw data files
-train
-test
-train.zip
-test.zip
