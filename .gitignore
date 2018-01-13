@@ -9,3 +9,6 @@ __pycache__
 
 # vim recovery files
 *.swp
+
+# makefiles and binaries
+build
