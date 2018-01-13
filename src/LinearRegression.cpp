@@ -65,7 +65,7 @@ void LinearRegression::gradient_descent(data training_data, double learning_rate
 
     // update parameters with gradients
     for (int i=0; i<this->w.size(); i++) {
-        this->w[i] -= learning_rate / m * error[i];
+        w[i] -= learning_rate / m * error[i];
     }
 }
 
