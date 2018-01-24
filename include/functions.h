@@ -1,6 +1,10 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
+#include <vector>
+
+typedef std::vector<std::vector<double>> data;
+
 class QuadraticCost {
 
 public:
@@ -10,5 +14,10 @@ public:
 
 };
 
-#endif /* FUNCTIONS_H */
+class Standardization {
+public:
+    static data normalize(data training_data);
+    static data scale(data training_data);
+};
 
+#endif /* FUNCTIONS_H */
