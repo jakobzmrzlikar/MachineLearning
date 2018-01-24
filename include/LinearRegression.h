@@ -13,7 +13,7 @@ public:
     // vector of weights
     std::vector<double> w;
 
-    LinearRegression();
+    LinearRegression(int features);
 
     // call function
     double h(double x);
