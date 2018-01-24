@@ -1,7 +1,7 @@
 #include <vector>
 #include <iostream>
-#include "LinearRegression.h"
-#include "functions.h"
+#include "LinearRegression.hpp"
+#include "functions.hpp"
 
 // training_data vector consisting of pairs (x,y)
 typedef std::vector<std::vector<double>> data;

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "LinearRegression.h"
+#include "LinearRegression.hpp"
 #include "data_loader.cpp"
 
 typedef std::vector<std::vector<double>> data;

@@ -1,6 +1,6 @@
 #include <cmath>
 #include <algorithm>
-#include "functions.h"
+#include "functions.hpp"
 
 typedef std::vector<std::vector<double>> data;
 
