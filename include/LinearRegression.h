@@ -9,6 +9,10 @@ typedef std::vector<std::vector<double>> data;
 class LinearRegression {
 
 public:
+
+    // vector of weights
+    std::vector<double> w;
+
     LinearRegression();
 
     // call function
@@ -18,8 +22,7 @@ public:
     std::vector<double> train(data training_data, double learning_rate, int epochs);
 
 private:
-    // vector of weights
-    std::vector<double> w;
+
     double cost(data training_data, int m);
 
     void gradient_descent(data training_data, double learning_rate, int m);
@@ -27,4 +30,3 @@ private:
 };
 
 #endif /* LINEARREGRESSION_H */
-
