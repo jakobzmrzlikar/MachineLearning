@@ -1,5 +1,7 @@
-#include <vector>
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
 #include "LinearRegression.hpp"
 #include "functions.hpp"
 
@@ -62,4 +64,33 @@ void LinearRegression::gradient_descent(data training_data, double learning_rate
     for (int i=0; i<this->w.size(); i++) {
         w[i] -= learning_rate / m * error[i];
     }
+}
+
+void LinearRegression::save(std::string filename) {
+    std::string name = "../data/" + filename;
+    std::ofstream file(name);
+    file << this->w[0];
+    for (int i=1; i<this->w.size(); i++) {
+      file << "," << this->w[i];
+    }
+    file << std::endl;
+    std::cout << "Model saved to path: " << name << '\n';
+}
+
+void LinearRegression::load(std::string filename) {
+    std::string name = "../data/" + filename;
+    std::ifstream file(name);
+    std::string line;
+    this->w.clear();
+
+    while(getline(file,line)) {
+        std::stringstream linestream(line);
+        std::string value;
+
+        while(getline(linestream,value,',')) {
+            this->w.push_back(atof(value.c_str()));
+        }
+
+    }
+
 }

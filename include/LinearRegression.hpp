@@ -2,6 +2,7 @@
 #define LINEARREGRESSION_H
 
 #include <vector>
+#include <string>
 
 // training_data vector consisting of pairs (x,y)
 typedef std::vector<std::vector<double>> data;
@@ -20,6 +21,10 @@ public:
 
     // train returns vector of costs at each epoch
     std::vector<double> train(data training_data, double learning_rate, int epochs);
+
+    void save(std::string filename);
+
+    void load(std::string filename);
 
 private:
 
