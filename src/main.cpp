@@ -12,11 +12,16 @@ int main() {
     double learning_rate = 0.000001;
     int epochs = 100;
 
+<<<<<<< HEAD
     DataLoader loader("train2.csv");
     data training_data = loader.load();
 
     DataLoader test("test.csv");
     data test_data = test.load();
+=======
+    data training_data = DataLoader::load("train.csv");
+    data test_data = DataLoader::load("test.csv");
+>>>>>>> f5d908ac33b99fff9c868a114771ca376e5009ff
 
     LinearRegression example(training_data[0].size());
     std::vector<double> training_cost = example.train(training_data, learning_rate, epochs);

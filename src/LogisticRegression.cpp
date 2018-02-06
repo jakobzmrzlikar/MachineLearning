@@ -2,19 +2,19 @@
 #include <fstream>
 #include <string>
 #include <sstream>
-#include "LinearRegression.hpp"
+#include "LogisticRegression.hpp"
 #include "functions.hpp"
 
 // training_data vector consisting of pairs (x,y)
 typedef std::vector<std::vector<double>> data;
 
-LinearRegression::LinearRegression(int features){
+LogisticRegression::LogisticRegression(int features){
     for (int i=0; i<features; i++) {
         w.push_back(0.0);
     }
 }
 
-double LinearRegression::h(std::vector<double> x) {
+double LogisticRegression::h(std::vector<double> x) {
     double result = w[0];
     for (int i=1; i<w.size(); i++) {
         result+=w[i] * x[i-1];
@@ -36,7 +36,7 @@ double LogisticRegression::cost(data training_data, int m) {
 }
 
 
-void LinearRegression::save(std::string filename) {
+void LogisticRegression::save(std::string filename) {
     std::string name = "../data/" + filename;
     std::ofstream file(name);
     file << w[0];
@@ -47,7 +47,7 @@ void LinearRegression::save(std::string filename) {
     std::cout << "Model saved to path: " << name << '\n';
 }
 
-void LinearRegression::load(std::string filename) {
+void LogisticRegression::load(std::string filename) {
     std::string name = "../data/" + filename;
     std::ifstream file(name);
     std::string line;
