@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
-#include "LinearRegression.hpp"
 #include "functions.hpp"
-#include "data_loader.cpp"
+#include "LinearRegression.hpp"
+#include "DataLoader.hpp"
 
 typedef std::vector<std::vector<double>> data;
 
@@ -11,10 +11,8 @@ int main() {
     double learning_rate = 0.0001;
     int epochs = 100;
 
-    DataLoader loader("train.csv");
-    data training_data = loader.load();
-    DataLoader test("test.csv");
-    data test_data = test.load();
+    data training_data = DataLoader::load("train.csv");
+    data test_data = DataLoader::load("test.csv");
 
     LinearRegression example(training_data[0].size());
     std::vector<double> training_cost = example.train(training_data, learning_rate, epochs);
