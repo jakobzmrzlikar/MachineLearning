@@ -17,7 +17,9 @@ public:
     LinearRegression(int features);
 
     // call function
-    double h(double x);
+    double h(std::vector<double> x);
+
+    double cost(data training_data, int m);
 
     // train returns vector of costs at each epoch
     std::vector<double> train(data training_data, double learning_rate, int epochs);
@@ -27,9 +29,7 @@ public:
     void load(std::string filename);
 
 private:
-
-    double cost(data training_data, int m);
-
+  
     void gradient_descent(data training_data, double learning_rate, int m);
 
 };
