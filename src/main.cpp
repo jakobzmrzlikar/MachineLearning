@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
-#include "LinearRegression.hpp"
 #include "functions.hpp"
-#include "data_loader.cpp"
+#include "LinearRegression.hpp"
+#include "DataLoader.hpp"
 
 typedef std::vector<std::vector<double>> data;
 
@@ -26,10 +26,12 @@ int main() {
 
     double test_cost = example.cost(test_data, test_data.size());
 
+    /*
 
     for (int i=0; i<training_cost.size(); i++) {
         std::cout << training_cost[i] << std::endl;
     }
+    */
 
     //std::cout << test_cost << std::endl;
 
