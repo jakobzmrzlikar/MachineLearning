@@ -5,7 +5,7 @@
 typedef std::vector<std::vector<double>> data;
 
 
-// QuadraticCost
+// Quadratic Cost
 
 double QuadraticCost::cost(double a, double y) {
     return(0.5*pow((a-y), 2));
@@ -20,7 +20,7 @@ double QuadraticCost::error_w(double a, double y, double x) {
 }
 
 
-// CrossEntropyCost
+// Cross-Entropy Cost
 
 double CrossEntropyCost::cost(double a, double y) {
   return(-1.0*(y*log(a)+(1.0-y)*log(1.0-a)));
