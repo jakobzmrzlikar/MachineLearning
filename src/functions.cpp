@@ -58,7 +58,7 @@ data Standardization::normalize(data training_data) {
 data Standardization::scale(data training_data) {
   for (int i=0; i<training_data[0].size(); i++) {
     std::vector<double> feature_list;
-    for (int j=0; j <training_data.size(); j++) {
+    for (int j=0; j<training_data.size(); j++) {
       feature_list.push_back(training_data[j][i]);
     }
 
@@ -66,6 +66,8 @@ data Standardization::scale(data training_data) {
     double max = *max_element(feature_list.begin(), feature_list.end());
 
     for (int j=0; j<training_data.size(); j++) {
+
+      // There could be problems here if max-min == 0, update needed!
       training_data[j][i] = (training_data[j][i]-min)/(max-min);
     }
   }
