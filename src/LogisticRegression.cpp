@@ -23,6 +23,20 @@ double LogisticRegression::h(std::vector<double> x) {
     return result;
 }
 
+std::vector<double> LogisticRegression::train(data training_data, double learning_rate, int epochs) {
+
+    int m = training_data.size();
+
+    std::vector<double> training_cost;
+    training_cost.push_back(cost(training_data, m));
+    for (int i=0; i<epochs; i++){
+        gradient_descent(training_data, learning_rate, m);
+        training_cost.push_back(cost(training_data, m));
+    }
+
+    return training_cost;
+  }
+
 double LogisticRegression::cost(data training_data, int m) {
     double cost = 0.0;
     for (int i=0; i<m; i++) {
@@ -33,6 +47,26 @@ double LogisticRegression::cost(data training_data, int m) {
     }
 
     return cost/m;
+}
+
+void LogisticRegression::gradient_descent(data training_data, double learning_rate, int m) {
+    std::vector<double> error(training_data[0].size());
+
+    // compute gradients
+    for (int i=0; i<m; i++) {
+        std::vector<double> x(training_data[i].begin(), training_data[i].end()-1);
+        double y = training_data[i].back();
+        double a = h(x);
+        error[0] += CrossEntropyCost::error_b(a, y);
+        for (int j=1; j<training_data[0].size(); j++) {
+          error[j] += CrossEntropyCost::error_w(a, y, x[j-1]);
+        }
+    }
+
+    // update parameters with gradients
+    for (int i=0; i<w.size(); i++) {
+        w[i] -= learning_rate / m * error[i];
+    }
 }
 
 
