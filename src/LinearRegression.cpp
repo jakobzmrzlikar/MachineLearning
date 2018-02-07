@@ -60,9 +60,8 @@ void LinearRegression::gradient_descent(data training_data, double learning_rate
         double a = h(x);
         error[0] += QuadraticCost::error_b(a, y);
         for (int j=1; j<training_data[0].size(); j++) {
-          error[j] += QuadraticCost::error_w(a, y, x[j]);
+          error[j] += QuadraticCost::error_w(a, y, x[j-1]);
         }
-
     }
 
     // update parameters with gradients
