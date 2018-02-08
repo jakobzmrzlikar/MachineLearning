@@ -14,7 +14,7 @@ public:
     // vector of weights
     std::vector<double> w;
 
-    LinearRegression(int features);
+    LinearRegression();
 
     // call function
     double h(std::vector<double> x);
@@ -29,7 +29,7 @@ public:
     void load(std::string filename);
 
 private:
-  
+
     void gradient_descent(data training_data, double learning_rate, int m);
 
 };

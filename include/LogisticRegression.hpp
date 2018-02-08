@@ -14,7 +14,7 @@ public:
     // vector of weights
     std::vector<double> w;
 
-    LogisticRegression(int features);
+    LogisticRegression();
 
     // call function
     double h(std::vector<double> x);

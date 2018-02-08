@@ -8,12 +8,7 @@
 // training_data vector consisting of pairs (x,y)
 typedef std::vector<std::vector<double>> data;
 
-LinearRegression::LinearRegression(int features){
-    for (int i=0; i<features; i++) {
-        w.push_back(0.0);
-    }
-
-}
+LinearRegression::LinearRegression(){}
 
 double LinearRegression::h(std::vector<double> x) {
     double result = w[0];
@@ -25,6 +20,10 @@ double LinearRegression::h(std::vector<double> x) {
 
 std::vector<double> LinearRegression::train(data training_data, double learning_rate, int epochs) {
 
+    for (int i=0; i<training_data[0].size(); i++) {
+        w.push_back(0.0);
+    }
+    
     int m = training_data.size();
 
     std::vector<double> training_cost;

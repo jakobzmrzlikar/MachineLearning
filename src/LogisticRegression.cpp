@@ -8,11 +8,7 @@
 // training_data vector consisting of pairs (x,y)
 typedef std::vector<std::vector<double>> data;
 
-LogisticRegression::LogisticRegression(int features){
-    for (int i=0; i<features; i++) {
-        w.push_back(0.0);
-    }
-}
+LogisticRegression::LogisticRegression(){}
 
 double LogisticRegression::h(std::vector<double> x) {
     double result = w[0];
@@ -24,6 +20,10 @@ double LogisticRegression::h(std::vector<double> x) {
 }
 
 std::vector<double> LogisticRegression::train(data training_data, double learning_rate, int epochs) {
+
+    for (int i=0; i<training_data[0].size(); i++) {
+        w.push_back(0.0);
+    }
 
     int m = training_data.size();
 
