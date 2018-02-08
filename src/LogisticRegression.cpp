@@ -69,7 +69,6 @@ void LogisticRegression::gradient_descent(data training_data, double learning_ra
     }
 }
 
-
 void LogisticRegression::save(std::string filename) {
     std::string name = "../data/" + filename;
     std::ofstream file(name);
