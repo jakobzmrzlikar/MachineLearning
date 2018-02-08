@@ -1,0 +1,13 @@
+Date: Thu Feb  8 18:50:08 2018
+
+Dataset: shuttle
+Model: Logistic Regression
+Cost: Cross-Entropy Cost
+Scaling: Yes
+Learning rate: 0.1
+Epochs: 1000
+Cross Validation batches: 5
+Final test error: 8%
+Final test cost: 0.235569
+Time running: 99.5996 seconds
+Model saved to path: ../data/shuttle/save.csv
