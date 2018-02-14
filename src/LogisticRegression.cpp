@@ -10,19 +10,18 @@ typedef std::vector<std::vector<double>> data;
 
 LogisticRegression::LogisticRegression(){}
 
-double LogisticRegression::h(std::vector<double> x) {
-    double result = w[0];
-    for (int i=1; i<w.size(); i++) {
-        result+=w[i] * x[i-1];
-    }
+double LogisticRegression::h(std::vector<double>& x) {
+    double result = Functions::dot_product(w, x);
     result = Functions::sigmoid(result);
     return result;
 }
 
-std::vector<double> LogisticRegression::train(data training_data, double learning_rate, int epochs) {
+std::vector<double> LogisticRegression::train(data& training_data, double learning_rate, int epochs) {
 
-    for (int i=0; i<training_data[0].size(); i++) {
-        w.push_back(0.0);
+    if (w.empty()) {
+      for (int i=0; i<training_data[0].size(); i++) {
+          w.push_back(0.0);
+      }
     }
 
     int m = training_data.size();
@@ -37,7 +36,7 @@ std::vector<double> LogisticRegression::train(data training_data, double learnin
     return training_cost;
   }
 
-double LogisticRegression::cost(data training_data, int m) {
+double LogisticRegression::cost(data& training_data, int m) {
     double cost = 0.0;
     for (int i=0; i<m; i++) {
         std::vector<double> x(training_data[i].begin(), training_data[i].end()-1);
@@ -49,7 +48,7 @@ double LogisticRegression::cost(data training_data, int m) {
     return cost/m;
 }
 
-void LogisticRegression::gradient_descent(data training_data, double learning_rate, int m) {
+void LogisticRegression::gradient_descent(data& training_data, double learning_rate, int m) {
     std::vector<double> error(training_data[0].size());
 
     // compute gradients

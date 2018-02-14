@@ -12,25 +12,23 @@
 typedef std::vector<std::vector<double>> data;
 
 template <class T>
-void CrossValidation(T model, std::string dataset, int k) {
+void CrossValidation(T& model, std::string dataset, int k) {
 
   auto start = std::chrono::system_clock::now();
 
   // Hyperparameters:
   double learning_rate = 0.1;
-  int epochs = 1000;
+  int epochs = 3000;
 
   std::string data_name = "../data/" + dataset + "/data.csv";
   std::string save_name = dataset + "/save.csv";
 
   data complete_data = DataLoader::load(data_name);
-  int const rows = complete_data.size();
-  int const cols = complete_data[0].size();
 
   // Optional data scaling
   complete_data = Standardization::scale(complete_data);
 
-  // Cross Validation algorithm
+  // K-fold Cross Validation algorithm
   data training_cost;
   std::vector<double> test_cost;
   data training_data;
@@ -60,7 +58,7 @@ void CrossValidation(T model, std::string dataset, int k) {
     std::vector<double> x(test_data[i].begin(), test_data[i].end()-1);
     double y = test_data[i].back();
     double a = model.h(x);
-    if (fabs(a-y) >= 0.5) {
+    if (fabs(a-y) < 0.5) {
       count++;
     }
   }
@@ -78,11 +76,14 @@ void CrossValidation(T model, std::string dataset, int k) {
   std::cout << "Learning rate: " << learning_rate << '\n';
   std::cout << "Epochs: " << epochs << '\n';
   std::cout << "Cross Validation batches: " << k << '\n';
-  std::cout << "Final test error: " << 100*count/test_data.size() << '%' << '\n';
+  std::cout << "Final test classification accuracy: " << 100*count/test_data.size() << '%' << '\n';
   std::cout << "Final test cost: " << test_cost.back() << '\n';
   std::cout << "Time running: " << elapsed_seconds.count() << " seconds" << '\n';
 
   model.save(save_name);
+
+  std::cout << "--------------------------------------------------------------------------------" << '\n';
+
 
   std::string name = "../data/" + dataset + "/training_cost.csv";
   std::ofstream file(name);

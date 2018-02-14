@@ -10,18 +10,17 @@ typedef std::vector<std::vector<double>> data;
 
 LinearRegression::LinearRegression(){}
 
-double LinearRegression::h(std::vector<double> x) {
-    double result = w[0];
-    for (int i=1; i<w.size(); i++) {
-        result+=w[i] * x[i-1];
-    }
+double LinearRegression::h(std::vector<double>& x) {
+    double result = Functions::dot_product(w, x);
     return result;
 }
 
-std::vector<double> LinearRegression::train(data training_data, double learning_rate, int epochs) {
-  
-    for (int i=0; i<training_data[0].size(); i++) {
-        w.push_back(0.0);
+std::vector<double> LinearRegression::train(data& training_data, double learning_rate, int epochs) {
+
+    if (w.empty()) {
+      for (int i=0; i<training_data[0].size(); i++) {
+          w.push_back(0.0);
+      }
     }
 
     int m = training_data.size();
@@ -37,7 +36,7 @@ std::vector<double> LinearRegression::train(data training_data, double learning_
 
 }
 
-double LinearRegression::cost(data training_data, int m) {
+double LinearRegression::cost(data& training_data, int m) {
     double cost = 0.0;
     for (int i=0; i<m; i++) {
         std::vector<double> x(training_data[i].begin(), training_data[i].end()-1);
@@ -49,7 +48,7 @@ double LinearRegression::cost(data training_data, int m) {
     return cost/m;
 }
 
-void LinearRegression::gradient_descent(data training_data, double learning_rate, int m) {
+void LinearRegression::gradient_descent(data& training_data, double learning_rate, int m) {
     std::vector<double> error(training_data[0].size());
 
     // compute gradients

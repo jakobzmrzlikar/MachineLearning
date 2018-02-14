@@ -24,14 +24,15 @@ public:
 
 class Standardization {
 public:
-    static data normalize(data training_data);
-    static data scale(data training_data);
+    static data normalize(data& training_data);
+    static data scale(data& training_data);
 };
 
 class Functions {
 public:
     static double sigmoid(double z);
     static double sigmoid_prime(double z);
+    static double dot_product(std::vector<double>& w, std::vector<double>& x);
 };
 
 #endif /* FUNCTIONS_H */

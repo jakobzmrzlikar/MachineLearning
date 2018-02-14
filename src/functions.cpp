@@ -37,7 +37,7 @@ double CrossEntropyCost::error_w(double a, double y, double x) {
 
 // Standardization
 
-data Standardization::normalize(data training_data) {
+data Standardization::normalize(data& training_data) {
   int m = training_data.size();
 
   for (int i=0; i<training_data[0].size()-1; i++){
@@ -55,7 +55,7 @@ data Standardization::normalize(data training_data) {
   return training_data;
 }
 
-data Standardization::scale(data training_data) {
+data Standardization::scale(data& training_data) {
   for (int i=0; i<training_data[0].size(); i++) {
     std::vector<double> feature_list;
     for (int j=0; j<training_data.size(); j++) {
@@ -84,4 +84,12 @@ double Functions::sigmoid(double z) {
 
 double Functions::sigmoid_prime(double z) {
   return Functions::sigmoid(z)*(1-Functions::sigmoid(z));
+}
+
+double Functions::dot_product(std::vector<double>& w, std::vector<double>& x) {
+  double result = w[0];
+  for (int i=1; i<w.size(); i++) {
+      result+=w[i] * x[i-1];
+  }
+  return result;
 }
