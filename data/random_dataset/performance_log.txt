@@ -1,0 +1,39 @@
+Date: Wed Feb 14 17:56:25 2018
+
+Dataset: random_dataset
+Model: Linear Regression
+Cost: Quadratic Cost
+Scaling: No
+Learning rate: 0.0001
+Epochs: 3000
+Cross Validation batches: 5
+Final test cost: 3.95309
+Time running: 4.41057 seconds
+Model saved to path: ../data/random_dataset/save.csv
+--------------------------------------------------------------------------------
+Date: Wed Feb 14 17:57:49 2018
+
+Dataset: random_dataset
+Model: Linear Regression
+Cost: Quadratic Cost
+Scaling: Yes
+Learning rate: 0.0001
+Epochs: 3000
+Cross Validation batches: 5
+Final test cost: 0.020458
+Time running: 4.4139 seconds
+Model saved to path: ../data/random_dataset/save.csv
+--------------------------------------------------------------------------------
+Date: Wed Feb 14 17:58:58 2018
+
+Dataset: random_dataset
+Model: Linear Regression
+Cost: Quadratic Cost
+Scaling: Yes
+Learning rate: 0.1
+Epochs: 3000
+Cross Validation batches: 5
+Final test cost: 0.000313736
+Time running: 4.41451 seconds
+Model saved to path: ../data/random_dataset/save.csv
+--------------------------------------------------------------------------------

@@ -11,3 +11,74 @@ Final test error: 8%
 Final test cost: 0.235569
 Time running: 99.5996 seconds
 Model saved to path: ../data/shuttle/save.csv
+--------------------------------------------------------------------------------
+Date: Wed Feb 14 13:11:07 2018
+
+Dataset: shuttle
+Model: Logistic Regression
+Cost: Cross-Entropy Cost
+Scaling: Yes
+Learning rate: 0.1
+Epochs: 1000
+Cross Validation batches: 5
+Final test error: 7.37931%
+Final test cost: 0.235643
+Time running: 126.027 seconds
+Model saved to path: ../data/shuttle/save.csv
+--------------------------------------------------------------------------------
+Date: Wed Feb 14 16:59:08 2018
+
+Dataset: shuttle
+Model: Logistic Regression
+Cost: Cross-Entropy Cost
+Scaling: Yes
+Learning rate: 0.1
+Epochs: 1000
+Cross Validation batches: 5
+Final test classification accuracy: 92.1379%
+Final test cost: 0.235514
+Time running: 98.5512 seconds
+Model saved to path: ../data/shuttle/save.csv
+--------------------------------------------------------------------------------
+Date: Wed Feb 14 17:19:00 2018
+
+Dataset: shuttle
+Model: Logistic Regression
+Cost: Cross-Entropy Cost
+Scaling: Yes
+Learning rate: 0.1
+Epochs: 1000
+Cross Validation batches: 5
+Final test classification accuracy: 92.1379%
+Final test cost: 0.235514
+Time running: 68.2115 seconds
+Model saved to path: ../data/shuttle/save.csv
+--------------------------------------------------------------------------------
+Date: Wed Feb 14 17:22:49 2018
+
+Dataset: shuttle
+Model: Logistic Regression
+Cost: Cross-Entropy Cost
+Scaling: Yes
+Learning rate: 0.1
+Epochs: 1000
+Cross Validation batches: 5
+Final test classification accuracy: 92.1379%
+Final test cost: 0.235514
+Time running: 37.3803 seconds
+Model saved to path: ../data/shuttle/save.csv
+--------------------------------------------------------------------------------
+Date: Wed Feb 14 17:30:12 2018
+
+Dataset: shuttle
+Model: Logistic Regression
+Cost: Cross-Entropy Cost
+Scaling: Yes
+Learning rate: 0.1
+Epochs: 3000
+Cross Validation batches: 5
+Final test classification accuracy: 93.069%
+Final test cost: 0.169647
+Time running: 114.434 seconds
+Model saved to path: ../data/shuttle/save.csv
+--------------------------------------------------------------------------------
