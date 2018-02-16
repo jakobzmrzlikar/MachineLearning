@@ -18,15 +18,15 @@ void CrossValidation(T& model, std::string dataset, int k) {
 
   // Hyperparameters:
   double learning_rate = 0.1;
-  int epochs = 3000;
+  int epochs = 100;
 
   std::string data_name = "../data/" + dataset + "/data.csv";
   std::string save_name = dataset + "/save.csv";
 
-  data complete_data = DataLoader::load(data_name);
+  data complete_data = load(data_name);
 
   // Optional data scaling
-  complete_data = Standardization::scale(complete_data);
+  complete_data = scale(complete_data);
 
   // K-fold Cross Validation algorithm
   data training_cost;

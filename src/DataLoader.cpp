@@ -7,8 +7,7 @@
 
 typedef std::vector<std::vector<double>> data;
 
-
-data DataLoader::load(std::string filename) {
+data load(std::string filename) {
   std::string name;
   std::string line;
   std::vector<double> vec;

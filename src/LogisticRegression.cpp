@@ -3,6 +3,7 @@
 #include <string>
 #include <sstream>
 #include "LogisticRegression.hpp"
+#include "cost.hpp"
 #include "functions.hpp"
 
 // training_data vector consisting of pairs (x,y)
@@ -11,8 +12,8 @@ typedef std::vector<std::vector<double>> data;
 LogisticRegression::LogisticRegression(){}
 
 double LogisticRegression::h(std::vector<double>& x) {
-    double result = Functions::dot_product(w, x);
-    result = Functions::sigmoid(result);
+    double result = dot_product(w, x);
+    result = sigmoid(result);
     return result;
 }
 
