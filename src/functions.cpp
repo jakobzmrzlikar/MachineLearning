@@ -2,42 +2,7 @@
 #include <algorithm>
 #include "functions.hpp"
 
-typedef std::vector<std::vector<double>> data;
-
-
-// Quadratic Cost
-
-double QuadraticCost::cost(double a, double y) {
-    return(0.5*pow((a-y), 2));
-}
-
-double QuadraticCost::error_b(double a, double y) {
-    return(a-y);
-}
-
-double QuadraticCost::error_w(double a, double y, double x) {
-    return((a-y)*x);
-}
-
-
-// Cross-Entropy Cost
-
-double CrossEntropyCost::cost(double a, double y) {
-  return(-1.0*(y*log(a)+(1.0-y)*log(1.0-a)));
-}
-
-double CrossEntropyCost::error_b(double a, double y) {
-  return (a-y);
-}
-
-double CrossEntropyCost::error_w(double a, double y, double x) {
-    return((a-y)*x);
-}
-
-
-// Standardization
-
-data Standardization::normalize(data& training_data) {
+data normalize(data& training_data) {
   int m = training_data.size();
 
   for (int i=0; i<training_data[0].size()-1; i++){
@@ -55,7 +20,7 @@ data Standardization::normalize(data& training_data) {
   return training_data;
 }
 
-data Standardization::scale(data& training_data) {
+data scale(data& training_data) {
   for (int i=0; i<training_data[0].size(); i++) {
     std::vector<double> feature_list;
     for (int j=0; j<training_data.size(); j++) {
@@ -76,17 +41,16 @@ data Standardization::scale(data& training_data) {
 }
 
 
-// Functions
 
-double Functions::sigmoid(double z) {
+double sigmoid(double z) {
   return 1.0/(1.0+exp(-z));
 }
 
-double Functions::sigmoid_prime(double z) {
-  return Functions::sigmoid(z)*(1-Functions::sigmoid(z));
+double sigmoid_prime(double z) {
+  return sigmoid(z)*(1-sigmoid(z));
 }
 
-double Functions::dot_product(std::vector<double>& w, std::vector<double>& x) {
+double dot_product(std::vector<double>& w, std::vector<double>& x) {
   double result = w[0];
   for (int i=1; i<w.size(); i++) {
       result+=w[i] * x[i-1];

@@ -1,13 +1,15 @@
 #ifndef SVM_H
 #define SVM_H
 
+#include <vector>
+
 // training_data vector consisting of pairs (x,y)
 typedef std::vector<std::vector<double>> data;
 
 class SVM {
 
 public:
-    
+
     // vector of weights
     std::vector<double> w;
 

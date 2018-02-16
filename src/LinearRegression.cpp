@@ -3,6 +3,7 @@
 #include <string>
 #include <sstream>
 #include "LinearRegression.hpp"
+#include "cost.hpp"
 #include "functions.hpp"
 
 // training_data vector consisting of pairs (x,y)
@@ -11,7 +12,7 @@ typedef std::vector<std::vector<double>> data;
 LinearRegression::LinearRegression(){}
 
 double LinearRegression::h(std::vector<double>& x) {
-    double result = Functions::dot_product(w, x);
+    double result = dot_product(w, x);
     return result;
 }
 
