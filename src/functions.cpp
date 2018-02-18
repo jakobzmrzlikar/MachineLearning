@@ -57,3 +57,19 @@ double dot_product(std::vector<double>& w, std::vector<double>& x) {
   }
   return result;
 }
+
+double norm(std::vector<double> w) {
+  double result = 0;
+  for (int i=0; i<w.size(); i++) {
+    result += pow(w[i], 2);
+  }
+  return sqrt(result);
+}
+
+double distance(std::vector<double> a, std::vector<double> b) {
+  double result = 0;
+  for (int i=0; i<a.size(); i++) {
+    result += pow((a[i]-b[i]), 2);
+  }
+  return sqrt(result);
+}
