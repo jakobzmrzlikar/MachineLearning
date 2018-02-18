@@ -82,3 +82,98 @@ Final test cost: 0.169647
 Time running: 114.434 seconds
 Model saved to path: ../data/shuttle/save.csv
 --------------------------------------------------------------------------------
+Date: Sun Feb 18 20:08:25 2018
+
+Dataset: shuttle
+Model: SVM
+Cost: HingeLoss
+Scaling: Yes
+Learning rate: 1e-06
+Epochs: 1000
+Cross Validation batches: 5
+Final test classification accuracy: 79.5172%
+Final test cost: 594.502
+Time running: 48.7449 seconds
+Model saved to path: ../data/shuttle/save.csv
+--------------------------------------------------------------------------------
+Date: Sun Feb 18 20:12:28 2018
+
+Dataset: shuttle
+Model: SVM
+Cost: HingeLoss
+Scaling: Yes
+Learning rate: 1e-06
+Epochs: 1000
+Cross Validation batches: 10
+Final test classification accuracy: 77.6552%
+Final test cost: 324.52
+Time running: 105.791 seconds
+Model saved to path: ../data/shuttle/save.csv
+--------------------------------------------------------------------------------
+Date: Sun Feb 18 20:17:55 2018
+
+Dataset: shuttle
+Model: Logistic Regression
+Cost: Cross-Entropy Cost
+Scaling: Yes
+Learning rate: 1e-06
+Epochs: 1000
+Cross Validation batches: 10
+Final test classification accuracy: 77.6552%
+Final test cost: 0.690416
+Time running: 145.28 seconds
+Model saved to path: ../data/shuttle/save.csv
+--------------------------------------------------------------------------------
+Date: Sun Feb 18 20:26:23 2018
+
+Dataset: shuttle
+Model: Logistic Regression
+Cost: Cross-Entropy Cost
+Scaling: Yes
+Learning rate: 0.1
+Epochs: 1000
+Cross Validation batches: 10
+Final test classification accuracy: 91.7241%
+Final test cost: 0.205253
+Time running: 143.924 seconds
+Model saved to path: ../data/shuttle/save.csv
+--------------------------------------------------------------------------------
+Date: Sun Feb 18 20:29:00 2018
+
+Dataset: shuttle
+Model: Logistic Regression
+Cost: Cross-Entropy Cost
+Scaling: Yes
+Learning rate: 0.1
+Epochs: 1000
+Cross Validation batches: 5
+Final test classification accuracy: 92.1379%
+Final test cost: 0.235514
+Time running: 64.3566 seconds
+Model saved to path: ../data/shuttle/save.csv
+--------------------------------------------------------------------------------
+Date: Sun Feb 18 21:16:25 2018
+
+Dataset: shuttle
+Model: SVM
+Cost: HingeLoss
+Scaling: Yes
+Learning rate: 1e-06
+Epochs: 1000
+Regularization: 10
+Cross Validation batches: 10
+Final test classification accuracy: 77.6552%
+Final training cost: 2698.74
+Final test cost: 324.518
+Time running: 108.886 seconds
+Model saved to path: ../data/shuttle/save.csv
+--------------------------------------------------------------------------------
+Date: Sun Feb 18 22:56:22 2018
+
+Dataset: shuttle
+Model: KNN
+Scaling: Yes
+K: 5
+Final test classification accuracy: 100%
+Time running: 6.9934 seconds
+--------------------------------------------------------------------------------
