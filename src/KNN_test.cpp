@@ -9,7 +9,7 @@ void test(T& model, std::string dataset, int k) {
   std::random_shuffle(complete_data.begin(), complete_data.end());
 
   // Optional data scaling
-  //complete_data = scale(complete_data);
+  complete_data = scale(complete_data);
 
   data training_data;
   data test_data;

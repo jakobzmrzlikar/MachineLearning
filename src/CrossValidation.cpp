@@ -17,8 +17,10 @@ void CrossValidation(T& model, std::string dataset, int k) {
   auto start = std::chrono::system_clock::now();
 
   // Hyperparameters:
-  double learning_rate = 0.1;
-  int epochs = 100;
+  double learning_rate = 0.01;
+  int epochs = 1000;
+  double C = 10;
+  int K = 3;
 
   std::string data_name = "../data/" + dataset + "/data.csv";
   std::string save_name = dataset + "/save.csv";
@@ -53,12 +55,16 @@ void CrossValidation(T& model, std::string dataset, int k) {
     training_cost.push_back(model.train(training_data, learning_rate, epochs));
     test_cost.push_back(model.cost(test_data, test_data.size()));
   }
+
   double count = 0;
   for (int i=0; i<test_data.size(); i++) {
     std::vector<double> x(test_data[i].begin(), test_data[i].end()-1);
     double y = test_data[i].back();
     double a = model.h(x);
-    if (fabs(a-y) < 0.5) {
+    // if (fabs(a-y) < 0.5) {
+    //   count++;
+    // }
+    if ((a>0 and y>0) or (a<0 and y<0)) {
       count++;
     }
   }
@@ -75,8 +81,10 @@ void CrossValidation(T& model, std::string dataset, int k) {
   std::cout << "Scaling: Yes" << '\n';
   std::cout << "Learning rate: " << learning_rate << '\n';
   std::cout << "Epochs: " << epochs << '\n';
+  std::cout << "Regularization: " << C << '\n';
   std::cout << "Cross Validation batches: " << k << '\n';
   std::cout << "Final test classification accuracy: " << 100*count/test_data.size() << '%' << '\n';
+  std::cout << "Final training cost: " << training_cost.back().back() << '\n';
   std::cout << "Final test cost: " << test_cost.back() << '\n';
   std::cout << "Time running: " << elapsed_seconds.count() << " seconds" << '\n';
 
