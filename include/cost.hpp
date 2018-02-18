@@ -18,5 +18,11 @@ public:
 
 };
 
+class HingeLoss {
+public:
+  static double cost(double a, double y);
+  static double error_b(double lambda);
+  static double error_w(double a, double y, double x, double w, double lambda);
+};
 
 #endif // COST_H

@@ -1,4 +1,5 @@
 #include <cmath>
+#include <algorithm>
 #include "cost.hpp"
 
 // Quadratic Cost
@@ -28,4 +29,20 @@ double CrossEntropyCost::error_b(double a, double y) {
 
 double CrossEntropyCost::error_w(double a, double y, double x) {
     return((a-y)*x);
+}
+
+double HingeLoss::cost(double a, double y) {
+  return std::max(0.0, 1-y*a);
+}
+
+double HingeLoss::error_b(double lambda) {
+  return lambda;
+}
+
+double HingeLoss::error_w(double a, double y, double x, double w, double lambda) {
+  if (y*a < 1) {
+    return (lambda*w - y*x);
+  } else {
+    return lambda*w;
+  }
 }
