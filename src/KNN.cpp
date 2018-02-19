@@ -1,6 +1,8 @@
 #include <vector>
 #include <utility>
 #include <algorithm>
+#include <string>
+#include <iostream>
 #include "functions.hpp"
 #include "KNN.hpp"
 
@@ -9,20 +11,30 @@ typedef std::vector<std::vector<double>> data;
 
 KNN::KNN() {}
 
-double KNN::h(std::vector<double>& x, int k) {
+double KNN::h(std::vector<double>& x, int k, std::string mode="classification") {
   std::vector<double> neighbours = kNeighbours(x, k);
-  double label = neighbours[0];
-  int occurances = std::count(neighbours.begin(), neighbours.end(), label);
-  for (int i=1; i<k; i++) {
-    if (neighbours[i] != label) {
-      int new_occurances = std::count(neighbours.begin(), neighbours.end(), neighbours[i]);
-      if (new_occurances > occurances) {
-        label = neighbours[i];
-        occurances = new_occurances;
+  if (mode == "classification") {
+    double label = neighbours[0];
+    int occurances = std::count(neighbours.begin(), neighbours.end(), label);
+    for (int i=1; i<k; i++) {
+      if (neighbours[i] != label) {
+        int new_occurances = std::count(neighbours.begin(), neighbours.end(), neighbours[i]);
+        if (new_occurances > occurances) {
+          label = neighbours[i];
+          occurances = new_occurances;
+        }
       }
     }
+    return label;
+  } else if (mode == "regression") {
+    double result = 0.0;
+    for (int i=0; i<k; i++) {
+      result += neighbours[i];
+    }
+    return result/k;
+  } else {
+    std::cout << "Invalid mode!" << '\n';
   }
-  return label;
 }
 
 void KNN::train(data& training_data) {

@@ -2,6 +2,7 @@
 #define KNN_H
 
 #include <vector>
+#include <string>
 
 typedef std::vector<std::vector<double>> data;
 
@@ -11,7 +12,7 @@ public:
   KNN();
 
   // call function
-  double h(std::vector<double>& x, int k);
+  double h(std::vector<double>& x, int k, std::string mode);
 
   void train(data& training_data);
 
