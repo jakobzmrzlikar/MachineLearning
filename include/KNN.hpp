@@ -15,6 +15,9 @@ public:
   double h(std::vector<double>& x, int k, std::string mode);
 
   void train(data& training_data);
+  
+  void save(std::string filename);
+  void load(std::string filename);
 
 private:
   data space;

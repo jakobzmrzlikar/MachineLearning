@@ -3,6 +3,9 @@
 #include <algorithm>
 #include <string>
 #include <iostream>
+#include <fstream>
+#include <sstream>
+
 #include "functions.hpp"
 #include "KNN.hpp"
 
@@ -58,4 +61,37 @@ std::vector<double> KNN::kNeighbours(std::vector<double>& x, int k) {
   }
 
   return result;
+}
+
+void KNN::save(std::string filename) {
+    std::string name = "../data/" + filename;
+    std::ofstream file(name);
+
+    for (int i=0; i<space.size(); i++) {
+      file << space[i][0];
+      for (int j=1; j<space[i].size(); j++) {
+        file << "," << space[i][j];
+      }
+      file << '\n';
+    }
+    std::cout << "Model saved to path: " << name << '\n';
+}
+
+void KNN::load(std::string filename) {
+    std::string name = "../data/" + filename;
+    std::ifstream file(name);
+    std::string line;
+    std::vector<double> vec;
+    space.clear();
+
+    while(getline(file,line)) {
+        std::stringstream linestream(line);
+        std::string value;
+
+        while(getline(linestream,value,',')) {
+          vec.push_back(atof(value.c_str()));
+        }
+        space.push_back(vec);
+        vec.clear();
+  }
 }
