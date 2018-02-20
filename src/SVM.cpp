@@ -14,13 +14,13 @@ SVM::SVM() {}
 
 double SVM::h(std::vector<double>& x) {
     double result = dot_product(w, x);
-    // if (result >= 1) {
-    //     return 1;
-    // } else if (result <= -1) {
-    //     return -1;
-    // } else {
-    //     return 0;
-    // }
+    if (result >= 1) {
+        return 1;
+    } else if (result <= -1) {
+        return -1;
+    } else {
+        return 0;
+    }
 }
 
 double SVM::cost(data& training_data, int m) {
@@ -62,7 +62,7 @@ std::vector<double> SVM::train(data& training_data, double learning_rate, int ep
     for (int i=0; i<m; i++) {
         std::vector<double> x(training_data[i].begin(), training_data[i].end()-1);
         double y = training_data[i].back();
-        double a = h(x);
+        double a = dot_product(w, x);
         double lambda = 2/(m*C);
         error[0] += HingeLoss::error_b(lambda);
         for (int j=1; j<training_data[0].size(); j++) {
