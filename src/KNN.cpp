@@ -7,6 +7,7 @@
 #include <sstream>
 
 #include "functions.hpp"
+#include "cost.hpp"
 #include "KNN.hpp"
 
 // training_data vector consisting of pairs (x,y)
@@ -42,6 +43,25 @@ double KNN::h(std::vector<double>& x, int k, std::string mode="classification") 
 
 void KNN::train(data& training_data) {
   space = training_data;
+}
+
+double KNN::cost(data& training_data, std::string mode) {
+  int m = training_data.size();
+  double cost = 0.0;
+  int correct_class = 0;
+  for (int i=0; i<m; i++) {
+      std::vector<double> x(training_data[i].begin(), training_data[i].end()-1);
+      double y = training_data[i].back();
+      double a = h(x, K, mode);
+      cost += QuadraticCost::cost(a, y);
+      if (fabs(a-y)<0.5) correct_class++;
+  }
+
+  if (mode == "regression") {
+    return cost/m;
+  } else if (mode == "classfiaction") {
+    return correct_class/m * 100;
+  }
 }
 
 std::vector<double> KNN::kNeighbours(std::vector<double>& x, int k) {

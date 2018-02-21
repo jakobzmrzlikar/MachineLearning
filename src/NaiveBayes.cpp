@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <cmath>
 #include "NaiveBayes.hpp"
 
 // training_data vector consisting of pairs (x,y)
@@ -64,6 +65,21 @@ void NaiveBayes::train(data& training_data) {
     probabilities[i].back() /= training_data.size(); // P(class == i)
   }
 
+}
+
+double NaiveBayes::cost(data& training_data, std::string mode) {
+  int m = training_data.size();
+  int correct_class = 0;
+  for (int i=0; i<m; i++) {
+      std::vector<double> x(training_data[i].begin(), training_data[i].end()-1);
+      double y = training_data[i].back();
+      double a = h(x);
+      if (fabs(a-y)<0.5) correct_class++;
+  }
+
+  if (mode == "classfiaction") {
+    return correct_class/m * 100;
+  }
 }
 
 void NaiveBayes::save(std::string filename) {

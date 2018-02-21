@@ -23,16 +23,23 @@ double SVM::h(std::vector<double>& x) {
     }
 }
 
-double SVM::cost(data& training_data, int m) {
+double SVM::cost(data& training_data, std::string mode) {
+    int m = training_data.size();
     double cost = 0.0;
+    int correct_class = 0;
     for (int i=0; i<m; i++) {
         std::vector<double> x(training_data[i].begin(), training_data[i].end()-1);
         double y = training_data[i].back();
         double a = h(x);
         cost += HingeLoss::cost(a, y);
+        if (fabs(a-y)<0.5) correct_class++;
     }
 
-    return cost+pow(norm(w), 2);
+    if (mode == "training") {
+      return cost+pow(norm(w), 2);
+    } else if (mode == "classfiaction") {
+      return correct_class/m * 100;
+    }
 }
 
 std::vector<double> SVM::train(data& training_data, double learning_rate, int epochs, double C) {
@@ -46,10 +53,10 @@ std::vector<double> SVM::train(data& training_data, double learning_rate, int ep
     int m = training_data.size();
 
     std::vector<double> training_cost;
-    training_cost.push_back(cost(training_data, m));
+    training_cost.push_back(cost(training_data, "training"));
     for (int i=0; i<epochs; i++){
         gradient_descent(training_data, learning_rate, m, C);
-        training_cost.push_back(cost(training_data, m));
+        training_cost.push_back(cost(training_data, "training"));
     }
 
     return training_cost;

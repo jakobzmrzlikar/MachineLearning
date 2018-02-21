@@ -72,6 +72,21 @@ void GaussianNaiveBayes::train(data& training_data) {
 
 }
 
+double GaussianNaiveBayes::cost(data& training_data, std::string mode) {
+  int m = training_data.size();
+  int correct_class = 0;
+  for (int i=0; i<m; i++) {
+      std::vector<double> x(training_data[i].begin(), training_data[i].end()-1);
+      double y = training_data[i].back();
+      double a = h(x);
+      if (fabs(a-y)<0.5) correct_class++;
+  }
+
+  if (mode == "classfiaction") {
+    return correct_class/m * 100;
+  }
+}
+
 double GaussianNaiveBayes::pdf(double x, double mean, double sd) {
   return (1/(sqrt(2*M_PI)*sd)) * exp(-((x-pow(mean, 2))/(2*pow(sd, 2))));
 }

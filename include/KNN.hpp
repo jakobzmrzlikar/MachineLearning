@@ -16,11 +16,14 @@ public:
 
   void train(data& training_data);
 
+  double cost(data& training_data, std::string mode);
+
   void save(std::string filename="KNN.csv");
   void load(std::string filename="KNN.csv");
 
 private:
   data space;
+  int K;
 
   std::vector<double> kNeighbours(std::vector<double>& x, int k);
 };

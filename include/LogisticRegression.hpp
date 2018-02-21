@@ -19,7 +19,7 @@ public:
     // call function
     double h(std::vector<double>& x);
 
-    double cost(data& training_data, int m);
+    double cost(data& training_data, std::string mode);
 
     // train returns vector of costs at each epoch
     std::vector<double> train(data& training_data, double learning_rate, int epochs);

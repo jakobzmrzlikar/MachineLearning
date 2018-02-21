@@ -16,6 +16,8 @@ public:
 
   void train(data& training_data);
 
+  double cost(data& training_data, std::string mode="classification");
+
   void save(std::string filename="NaiveBayes.csv");
   void load(std::string filename="NaiveBayes.csv");
 
@@ -33,6 +35,8 @@ public:
   double h(std::vector<double>& x);
 
   void train(data& training_data);
+
+  double cost(data& training_data, std::string mode="classification");
 
   void save(std::string filename="GaussianNaiveBayes.csv");
   void load(std::string filename="GaussianNaiveBayes.csv");

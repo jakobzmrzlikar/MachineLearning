@@ -21,7 +21,7 @@ public:
     double h(std::vector<double>& x);
     // The above function actually returns -1 or 1, double used for consistency
 
-    double cost(data& training_data, int m);
+    double cost(data& training_data, std::string mode);
 
     // train returns vector of costs at each epoch
     std::vector<double> train(data& training_data, double learning_rate, int epochs, double C);
