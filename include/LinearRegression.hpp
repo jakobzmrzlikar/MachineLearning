@@ -19,19 +19,21 @@ public:
     // call function
     double h(std::vector<double>& x);
 
-    double cost(data& training_data, int m);
+    double cost(data& training_data, std::string mode="regression");
 
     // train returns vector of costs at each epoch
     std::vector<double> train(data& training_data, double learning_rate, int epochs);
 
-    void save(std::string filename);
+    void save(std::string filename="LinearRegression.csv");
 
-    void load(std::string filename);
+    void load(std::string filename="LinearRegression.csv");
 
 private:
 
     void gradient_descent(data& training_data, double learning_rate, int m);
 
 };
+
+std::ostream& operator<<(std::ostream& os, const LinearRegression& m);
 
 #endif /* LINEARREGRESSION_H */

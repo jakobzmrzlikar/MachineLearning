@@ -24,14 +24,16 @@ public:
     // train returns vector of costs at each epoch
     std::vector<double> train(data& training_data, double learning_rate, int epochs);
 
-    void save(std::string filename);
+    void save(std::string filename="LogisticRegression.csv");
 
-    void load(std::string filename);
+    void load(std::string filename="LogisticRegression.csv");
 
 private:
 
     void gradient_descent(data& training_data, double learning_rate, int m);
 
 };
+
+std::ostream& operator<<(std::ostream& os, const LogisticRegression& m);
 
 #endif /* LOGISTICREGRESSION_H */

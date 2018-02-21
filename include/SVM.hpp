@@ -26,9 +26,9 @@ public:
     // train returns vector of costs at each epoch
     std::vector<double> train(data& training_data, double learning_rate, int epochs, double C);
 
-    void save(std::string filename);
+    void save(std::string filename="SVM.csv");
 
-    void load(std::string filename);
+    void load(std::string filename="SVM.csv");
 
 private:
 
@@ -36,5 +36,7 @@ private:
 
 
 };
+
+std::ostream& operator<<(std::ostream& os, const SVM& m);
 
 #endif // SVM_H

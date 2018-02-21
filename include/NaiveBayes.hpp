@@ -16,8 +16,8 @@ public:
 
   void train(data& training_data);
 
-  void save(std::string filename);
-  void load(std::string filename);
+  void save(std::string filename="NaiveBayes.csv");
+  void load(std::string filename="NaiveBayes.csv");
 
 private:
   data probabilities;
@@ -34,8 +34,8 @@ public:
 
   void train(data& training_data);
 
-  void save(std::string filename);
-  void load(std::string filename);
+  void save(std::string filename="GaussianNaiveBayes.csv");
+  void load(std::string filename="GaussianNaiveBayes.csv");
 
 private:
   std::vector<double> class_frequencies;
@@ -45,5 +45,9 @@ private:
   double pdf(double x, double mean, double sd);
 
 };
+
+std::ostream& operator<<(std::ostream& os, const NaiveBayes& m);
+std::ostream& operator<<(std::ostream& os, const GaussianNaiveBayes& m);
+
 
 #endif // NAIVEBAYES_H
