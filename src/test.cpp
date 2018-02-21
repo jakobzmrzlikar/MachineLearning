@@ -31,7 +31,7 @@ void test(T& model, std::string dataset, std::string mode) {
   if (mode == "regression") {
     std::cout << "Test cost: " << cost << '\n';
   } else if (mode == "classification") {
-    std::cout << "Test classification accuracy: " << cost << '\n';
+    std::cout << "Test classification accuracy: " << cost << '%' << '\n';
   }
 
 }
