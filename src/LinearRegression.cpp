@@ -16,6 +16,19 @@ double LinearRegression::h(std::vector<double>& x) {
     return result;
 }
 
+double LinearRegression::cost(data& training_data, std::string mode) {
+    int m = training_data.size();
+    double cost = 0.0;
+    for (int i=0; i<m; i++) {
+        std::vector<double> x(training_data[i].begin(), training_data[i].end()-1);
+        double y = training_data[i].back();
+        double a = h(x);
+        cost += QuadraticCost::cost(a, y);
+    }
+
+    return cost/m;
+}
+
 std::vector<double> LinearRegression::train(data& training_data, double learning_rate, int epochs) {
 
     if (w.empty()) {
@@ -27,26 +40,14 @@ std::vector<double> LinearRegression::train(data& training_data, double learning
     int m = training_data.size();
 
     std::vector<double> training_cost;
-    training_cost.push_back(cost(training_data, m));
+    training_cost.push_back(cost(training_data));
     for (int i=0; i<epochs; i++){
         gradient_descent(training_data, learning_rate, m);
-        training_cost.push_back(cost(training_data, m));
+        training_cost.push_back(cost(training_data));
     }
 
     return training_cost;
 
-}
-
-double LinearRegression::cost(data& training_data, int m) {
-    double cost = 0.0;
-    for (int i=0; i<m; i++) {
-        std::vector<double> x(training_data[i].begin(), training_data[i].end()-1);
-        double y = training_data[i].back();
-        double a = h(x);
-        cost += QuadraticCost::cost(a, y);
-    }
-
-    return cost/m;
 }
 
 void LinearRegression::gradient_descent(data& training_data, double learning_rate, int m) {
@@ -70,7 +71,7 @@ void LinearRegression::gradient_descent(data& training_data, double learning_rat
 }
 
 void LinearRegression::save(std::string filename) {
-    std::string name = "../data/" + filename;
+    std::string name = "../data/saves/" + filename;
     std::ofstream file(name);
     file << w[0];
     for (int i=1; i<w.size(); i++) {
@@ -81,7 +82,7 @@ void LinearRegression::save(std::string filename) {
 }
 
 void LinearRegression::load(std::string filename) {
-    std::string name = "../data/" + filename;
+    std::string name = "../data/saves/" + filename;
     std::ifstream file(name);
     std::string line;
     w.clear();
@@ -96,4 +97,8 @@ void LinearRegression::load(std::string filename) {
 
     }
 
+}
+
+std::ostream& operator<<(std::ostream& os, const LinearRegression& m) {
+  return os << "Linear Regression";
 }

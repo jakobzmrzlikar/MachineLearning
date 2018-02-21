@@ -67,7 +67,7 @@ void NaiveBayes::train(data& training_data) {
 }
 
 void NaiveBayes::save(std::string filename) {
-    std::string name = "../data/" + filename;
+    std::string name = "../data/saves/" + filename;
     std::ofstream file(name);
 
     for (int i=0; i<probabilities.size(); i++) {
@@ -81,7 +81,7 @@ void NaiveBayes::save(std::string filename) {
 }
 
 void NaiveBayes::load(std::string filename) {
-    std::string name = "../data/" + filename;
+    std::string name = "../data/saves/" + filename;
     std::ifstream file(name);
     std::string line;
     std::vector<double> vec;
@@ -97,4 +97,8 @@ void NaiveBayes::load(std::string filename) {
         probabilities.push_back(vec);
         vec.clear();
   }
+}
+
+std::ostream& operator<<(std::ostream& os, const NaiveBayes& m) {
+  return os << "Naive Bayes";
 }

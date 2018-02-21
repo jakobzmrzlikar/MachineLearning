@@ -78,7 +78,7 @@ std::vector<double> SVM::train(data& training_data, double learning_rate, int ep
   }
 
   void SVM::save(std::string filename) {
-      std::string name = "../data/" + filename;
+      std::string name = "../data/saves/" + filename;
       std::ofstream file(name);
       file << w[0];
       for (int i=1; i<w.size(); i++) {
@@ -89,7 +89,7 @@ std::vector<double> SVM::train(data& training_data, double learning_rate, int ep
   }
 
   void SVM::load(std::string filename) {
-      std::string name = "../data/" + filename;
+      std::string name = "../data/saves/" + filename;
       std::ifstream file(name);
       std::string line;
       w.clear();
@@ -105,3 +105,7 @@ std::vector<double> SVM::train(data& training_data, double learning_rate, int ep
       }
 
   }
+
+std::ostream& operator<<(std::ostream& os, const SVM& m) {
+  return os << "SVM";
+}

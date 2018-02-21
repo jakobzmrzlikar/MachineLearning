@@ -77,7 +77,7 @@ double GaussianNaiveBayes::pdf(double x, double mean, double sd) {
 }
 
 void GaussianNaiveBayes::save(std::string filename) {
-    std::string name = "../data/" + filename;
+    std::string name = "../data/saves/" + filename;
     std::ofstream file(name);
 
     file << class_frequencies[0];
@@ -102,7 +102,7 @@ void GaussianNaiveBayes::save(std::string filename) {
 }
 
 void GaussianNaiveBayes::load(std::string filename) {
-    std::string name = "../data/" + filename;
+    std::string name = "../data/saves" + filename;
     std::ifstream file(name);
     std::string line;
     class_frequencies.clear();
@@ -130,4 +130,8 @@ void GaussianNaiveBayes::load(std::string filename) {
         i++;
 
     }
+}
+
+std::ostream& operator<<(std::ostream& os, const GaussianNaiveBayes& m) {
+  return os << "Gaussian Naive Bayes";
 }

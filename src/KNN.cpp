@@ -64,7 +64,7 @@ std::vector<double> KNN::kNeighbours(std::vector<double>& x, int k) {
 }
 
 void KNN::save(std::string filename) {
-    std::string name = "../data/" + filename;
+    std::string name = "../data/saves/" + filename;
     std::ofstream file(name);
 
     for (int i=0; i<space.size(); i++) {
@@ -78,7 +78,7 @@ void KNN::save(std::string filename) {
 }
 
 void KNN::load(std::string filename) {
-    std::string name = "../data/" + filename;
+    std::string name = "../data/saves/" + filename;
     std::ifstream file(name);
     std::string line;
     std::vector<double> vec;
@@ -94,4 +94,8 @@ void KNN::load(std::string filename) {
         space.push_back(vec);
         vec.clear();
   }
+}
+
+std::ostream& operator<<(std::ostream& os, const KNN& m) {
+  return os << "KNN";
 }

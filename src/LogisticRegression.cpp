@@ -70,7 +70,7 @@ void LogisticRegression::gradient_descent(data& training_data, double learning_r
 }
 
 void LogisticRegression::save(std::string filename) {
-    std::string name = "../data/" + filename;
+    std::string name = "../data/saves/" + filename;
     std::ofstream file(name);
     file << w[0];
     for (int i=1; i<w.size(); i++) {
@@ -81,7 +81,7 @@ void LogisticRegression::save(std::string filename) {
 }
 
 void LogisticRegression::load(std::string filename) {
-    std::string name = "../data/" + filename;
+    std::string name = "../data/saves/" + filename;
     std::ifstream file(name);
     std::string line;
     w.clear();
@@ -96,4 +96,8 @@ void LogisticRegression::load(std::string filename) {
 
     }
 
+}
+
+std::ostream& operator<<(std::ostream& os, const LogisticRegression& m) {
+  return os << "Logistic Regression";
 }
