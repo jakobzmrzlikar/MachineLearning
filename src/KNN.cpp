@@ -37,7 +37,7 @@ double KNN::h(std::vector<double>& x, int k, std::string mode="classification") 
     }
     return result/k;
   } else {
-    std::cout << "Invalid mode!" << '\n';
+    std::cout << "Invalid mode: " << mode << '\n';
   }
 }
 
@@ -48,7 +48,7 @@ void KNN::train(data& training_data) {
 double KNN::cost(data& training_data, std::string mode) {
   int m = training_data.size();
   double cost = 0.0;
-  int correct_class = 0;
+  double correct_class = 0.0;
   for (int i=0; i<m; i++) {
       std::vector<double> x(training_data[i].begin(), training_data[i].end()-1);
       double y = training_data[i].back();
@@ -59,7 +59,7 @@ double KNN::cost(data& training_data, std::string mode) {
 
   if (mode == "regression") {
     return cost/m;
-  } else if (mode == "classfiaction") {
+  } else if (mode == "classification") {
     return correct_class/m * 100;
   }
 }
@@ -77,7 +77,7 @@ std::vector<double> KNN::kNeighbours(std::vector<double>& x, int k) {
 
   std::vector<double> result;
   for (int i=0; i<k; i++) {
-    result.push_back(d[0].second);
+    result.push_back(d[i].second);
   }
 
   return result;

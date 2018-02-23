@@ -29,21 +29,24 @@ double LinearRegression::cost(data& training_data, std::string mode) {
     return cost/m;
 }
 
-std::vector<double> LinearRegression::train(data& training_data, double learning_rate, int epochs) {
+std::vector<double> LinearRegression::train(data& training_data, double learning_rate, int epochs, double C) {
 
-    if (w.empty()) {
-      for (int i=0; i<training_data[0].size(); i++) {
-          w.push_back(0.0);
-      }
+    w.clear();
+    for (int i=0; i<training_data[0].size(); i++) {
+        w.push_back(0.0);
     }
 
     int m = training_data.size();
+    double lambda = 1/(2*m*C);
 
     std::vector<double> training_cost;
     training_cost.push_back(cost(training_data));
     for (int i=0; i<epochs; i++){
         gradient_descent(training_data, learning_rate, m);
         training_cost.push_back(cost(training_data));
+        if (training_cost[i+1] > training_cost[i]) { // early stopping
+          return training_cost;
+        }
     }
 
     return training_cost;
@@ -68,6 +71,7 @@ void LinearRegression::gradient_descent(data& training_data, double learning_rat
     for (int i=0; i<w.size(); i++) {
         w[i] -= learning_rate / m * error[i];
     }
+
 }
 
 void LinearRegression::save(std::string filename) {
