@@ -8,7 +8,7 @@ Learning rate: 0.1
 Epochs: 1000
 Cross Validation batches: 5
 Final test error: 8%
-Final test cost: 0.235569
+Fina*l test cost: 0.235569
 Time running: 99.5996 seconds
 Model saved to path: ../data/shuttle/save.csv
 --------------------------------------------------------------------------------
@@ -176,4 +176,113 @@ Scaling: Yes
 K: 5
 Final test classification accuracy: 100%
 Time running: 6.9934 seconds
+--------------------------------------------------------------------------------
+CROSS VALIDATION
+Date: Fri Feb 23 19:26:01 2018
+
+Dataset: shuttle
+Model: Logistic Regression
+Mode: classification
+Scaling: Yes
+Cross Validation batches: 20
+Epochs: 100
+Learning rate: 1
+Regularization: 1
+Final training cost: 0.358083
+Final validation cost: 0.383604
+Time running: 3.76362 seconds
+Model saved to path: ../data/saves/LogisticRegression.csv
+--------------------------------------------------------------------------------
+TEST
+Date: Fri Feb 23 19:26:01 2018
+
+Dataset: shuttle
+Model: Logistic Regression
+Test classification accuracy: 83.6%
+--------------------------------------------------------------------------------
+CROSS VALIDATION
+Date: Fri Feb 23 19:47:47 2018
+
+Dataset: shuttle
+Model: Logistic Regression
+Mode: classification
+Scaling: Yes
+Cross Validation batches: 20
+Epochs: 1000
+Learning rate: 1
+Regularization: 1
+Final training cost: 0.201119
+Final validation cost: 0.213135
+Time running: 14.9718 seconds
+Model saved to path: ../data/saves/LogisticRegression.csv
+--------------------------------------------------------------------------------
+TEST
+Date: Fri Feb 23 19:47:47 2018
+
+Dataset: shuttle
+Model: Logistic Regression
+Test classification accuracy: 84.76%
+--------------------------------------------------------------------------------
+CROSS VALIDATION
+Date: Fri Feb 23 19:28:41 2018
+
+Dataset: shuttle
+Model: Logistic Regression
+Mode: classification
+Scaling: Yes
+Cross Validation batches: 20
+Epochs: 10000
+Learning rate: 1
+Regularization: 1
+Final training cost: 0.116314
+Final validation cost: 0.118748
+Time running: 126.434 seconds
+Model saved to path: ../data/saves/LogisticRegression.csv
+--------------------------------------------------------------------------------
+TEST
+Date: Fri Feb 23 19:28:41 2018
+
+Dataset: shuttle
+Model: Logistic Regression
+Test classification accuracy: 83.8%
+--------------------------------------------------------------------------------
+TEST
+Date: Fri Feb 23 21:34:35 2018
+
+Dataset: shuttle
+Model: KNN
+K: 1
+Test classification accuracy: 85.12%
+--------------------------------------------------------------------------------
+TEST
+Date: Fri Feb 23 21:36:44 2018
+
+Dataset: shuttle
+Model: KNN
+K: 11
+Test classification accuracy: 83.76%
+--------------------------------------------------------------------------------
+TEST
+Date: Fri Feb 23 21:37:42 2018
+
+Dataset: shuttle
+Model: KNN
+K: 101
+Test classification accuracy: 84%
+--------------------------------------------------------------------------------
+TEST
+Date: Fri Feb 23 21:38:34 2018
+
+Dataset: shuttle
+Model: KNN
+K: 1001
+Test classification accuracy: 82.4%
+--------------------------------------------------------------------------------
+TEST
+Date: Fri Feb 23 21:40:26 2018
+
+Dataset: shuttle
+Model: KNN
+K: 3
+Test classification accuracy: 85.08%
 --------------------------------------------------------------------------------

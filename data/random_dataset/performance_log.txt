@@ -37,3 +37,46 @@ Final test cost: 0.000313736
 Time running: 4.41451 seconds
 Model saved to path: ../data/random_dataset/save.csv
 --------------------------------------------------------------------------------
+CROSS VALIDATION
+Date: Fri Feb 23 19:49:58 2018
+
+Dataset: random_dataset
+Model: Linear Regression
+Mode: regression
+Scaling: Yes
+Cross Validation batches: 20
+Epochs: 1000
+Learning rate: 1
+Regularization: 1
+Final training cost: 0.000313376
+Final validation cost: 0.000255728
+Time running: 0.207049 seconds
+Model saved to path: ../data/saves/LinearRegression.csv
+--------------------------------------------------------------------------------
+TEST
+Date: Fri Feb 23 19:49:58 2018
+
+Dataset: random_dataset
+Model: Linear Regression
+Test cost: 0.000584606
+--------------------------------------------------------------------------------
+CROSS VALIDATION
+Date: Fri Feb 23 20:51:26 2018
+
+Dataset: random_dataset
+Model: KNN
+Mode: regression
+Scaling: Yes
+Cross Validation batches: 20
+K: 21
+Final validation cost: 0.000239708
+Time running: 0.479987 seconds
+Model saved to path: ../data/saves/KNN.csv
+--------------------------------------------------------------------------------
+TEST
+Date: Fri Feb 23 20:51:27 2018
+
+Dataset: random_dataset
+Model: KNN
+Test cost: 0.000680666
+--------------------------------------------------------------------------------
