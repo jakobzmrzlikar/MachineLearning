@@ -8,6 +8,7 @@ typedef std::vector<std::vector<double>> data;
 
 class KNN {
 public:
+  int K;
 
   KNN();
 
@@ -23,7 +24,6 @@ public:
 
 private:
   data space;
-  int K;
 
   std::vector<double> kNeighbours(std::vector<double>& x, int k);
 };
