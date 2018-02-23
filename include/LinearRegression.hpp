@@ -22,7 +22,7 @@ public:
     double cost(data& training_data, std::string mode="regression");
 
     // train returns vector of costs at each epoch
-    std::vector<double> train(data& training_data, double learning_rate, int epochs);
+    std::vector<double> train(data& training_data, double learning_rate, int epochs, double C);
 
     void save(std::string filename="LinearRegression.csv");
 
