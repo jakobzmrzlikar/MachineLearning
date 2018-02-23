@@ -25,6 +25,7 @@ void test(T& model, std::string dataset, std::string mode) {
   std::time_t end_time = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
 
   // Report
+  std::cout << "TEST" << '\n';
   std::cout << "Date: " << std::ctime(&end_time) << '\n';
   std::cout << "Dataset: " << dataset << '\n';
   std::cout << "Model: " << model << '\n';
@@ -33,5 +34,6 @@ void test(T& model, std::string dataset, std::string mode) {
   } else if (mode == "classification") {
     std::cout << "Test classification accuracy: " << cost << '%' << '\n';
   }
+  std::cout << "--------------------------------------------------------------------------------" << '\n';
 
 }
