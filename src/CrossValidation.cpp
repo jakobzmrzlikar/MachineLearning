@@ -18,7 +18,7 @@ void cross_validate(T& model, std::string dataset, int k, std::string mode) {
 
   // Hyperparameters:
   int epochs = 100;
-  double learning_rate = 1e-13;
+  double learning_rate = 1e-8;
 
   std::string data_name = "../data/" + dataset + "/train.csv";
 
@@ -51,11 +51,6 @@ void cross_validate(T& model, std::string dataset, int k, std::string mode) {
 
     training_cost = model.train(training_data, learning_rate, epochs, model.C);
     validation_cost.push_back(model.cost(validation_data, "training"));
-    // std::cout << learning_rate << '\n';
-    // std::cout << model.C << '\n';
-    // std::cout << training_cost.back() << '\n';
-    // std::cout << validation_cost.back() << '\n';
-    // std::cout << '\n';
 
     learning_rate *= 10;
   }
@@ -68,7 +63,7 @@ void cross_validate(T& model, std::string dataset, int k, std::string mode) {
     }
   }
   int index = std::distance(validation_cost.begin(), find(validation_cost.begin(), validation_cost.end(), min));
-  learning_rate = 1e-13 * pow(10, index);
+  learning_rate = 1e-8 * pow(10, index);
   epochs = 1000;
 
   training_cost = model.train(training_data, learning_rate, epochs, model.C);
