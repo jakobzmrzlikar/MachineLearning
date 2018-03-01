@@ -3,46 +3,40 @@
 #include <fstream>
 #include <string>
 #include <sstream>
-#include "SVM.hpp"
+#include "SVR.hpp"
 #include "functions.hpp"
 #include "cost.hpp"
 
 // training_data vector consisting of pairs (x,y)
 typedef std::vector<std::vector<double>> data;
 
-SVM::SVM() {}
+SVR::SVR() {}
 
-double SVM::h(std::vector<double>& x) {
+double SVR::h(std::vector<double>& x) {
     double result = dot_product(w, x);
-    if (result >= 1) {
-        return 1;
-    } else if (result <= -1) {
-        return -1;
-    } else {
-        return 0;
-    }
+    return result;
 }
 
-double SVM::cost(data& training_data, std::string mode) {
+double SVR::cost(data& training_data, std::string mode) {
     int m = training_data.size();
-    double cost = 0.0;
-    double correct_class = 0;
+    double tcost = 0.0;
+    double qcost = 0.0;
     for (int i=0; i<m; i++) {
         std::vector<double> x(training_data[i].begin(), training_data[i].end()-1);
         double y = training_data[i].back();
         double a = h(x);
-        cost += HingeLoss::cost(a, y);
-        if (fabs(a-y)<0.5) correct_class++;
+        tcost += HingeLoss::cost(a, y);
+        qcost += QuadraticCost::cost(a, y);
     }
 
     if (mode == "training") {
-      return cost+pow(norm(w), 2);
-    } else if (mode == "classification") {
-      return correct_class/m * 100;
+      return C*tcost+pow(norm(w), 2);
+    } else if (mode == "regression") {
+      return qcost/m;
     }
 }
 
-std::vector<double> SVM::train(data& training_data, double learning_rate, int epochs, double C) {
+std::vector<double> SVR::train(data& training_data, double learning_rate, int epochs, double C) {
 
     w.clear();
     for (int i=0; i<training_data[0].size(); i++) {
@@ -56,15 +50,15 @@ std::vector<double> SVM::train(data& training_data, double learning_rate, int ep
     for (int i=0; i<epochs; i++){
         gradient_descent(training_data, learning_rate, m, C);
         training_cost.push_back(cost(training_data, "training"));
-        if (training_cost[i+1] > training_cost[i]) { // early stopping
-          return training_cost;
-        }
+        // if (training_cost[i+1] > training_cost[i]) { // early stopping
+        //   return training_cost;
+        // }
     }
 
     return training_cost;
   }
 
-  void SVM::gradient_descent(data& training_data, double learning_rate, int m, double C) {
+  void SVR::gradient_descent(data& training_data, double learning_rate, int m, double C) {
     std::vector<double> error(training_data[0].size());
 
     // compute gradients
@@ -86,7 +80,7 @@ std::vector<double> SVM::train(data& training_data, double learning_rate, int ep
 
   }
 
-  void SVM::save(std::string filename) {
+  void SVR::save(std::string filename) {
       std::string name = "../data/saves/" + filename;
       std::ofstream file(name);
       file << w[0];
@@ -97,7 +91,7 @@ std::vector<double> SVM::train(data& training_data, double learning_rate, int ep
       std::cout << "Model saved to path: " << name << '\n';
   }
 
-  void SVM::load(std::string filename) {
+  void SVR::load(std::string filename) {
       std::string name = "../data/saves/" + filename;
       std::ifstream file(name);
       std::string line;
@@ -115,6 +109,6 @@ std::vector<double> SVM::train(data& training_data, double learning_rate, int ep
 
   }
 
-std::ostream& operator<<(std::ostream& os, const SVM& m) {
-  return os << "SVM";
+std::ostream& operator<<(std::ostream& os, const SVR& m) {
+  return os << "SVR";
 }

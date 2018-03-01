@@ -34,7 +34,7 @@ double GaussianNaiveBayes::h(std::vector<double>& x) {
   }
   probability /= data_probability;
   // Calculate final probability, even though label is known before that.
-  std::cout << "Probability: " << probability*100 << '%' << '\n';
+  //std::cout << "Probability: " << probability*100 << '%' << '\n';
 
   return label;
 }
@@ -69,12 +69,11 @@ void GaussianNaiveBayes::train(data& training_data) {
       standard_deviations[j] = sqrt(standard_deviations[j]);
     }
   }
-
 }
 
 double GaussianNaiveBayes::cost(data& training_data, std::string mode) {
   int m = training_data.size();
-  int correct_class = 0;
+  double correct_class = 0;
   for (int i=0; i<m; i++) {
       std::vector<double> x(training_data[i].begin(), training_data[i].end()-1);
       double y = training_data[i].back();
@@ -82,7 +81,7 @@ double GaussianNaiveBayes::cost(data& training_data, std::string mode) {
       if (fabs(a-y)<0.5) correct_class++;
   }
 
-  if (mode == "classfiaction") {
+  if (mode == "classification") {
     return correct_class/m * 100;
   }
 }

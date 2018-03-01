@@ -17,9 +17,8 @@ void cross_validate(T& model, std::string dataset, int k, std::string mode) {
   auto start = std::chrono::system_clock::now();
 
   // Hyperparameters:
-  int epochs = 10;
-  double learning_rate = 1e-10;
-  double C = 1e-10;
+  int epochs = 100;
+  double learning_rate = 1e-13;
 
   std::string data_name = "../data/" + dataset + "/train.csv";
 
@@ -50,11 +49,15 @@ void cross_validate(T& model, std::string dataset, int k, std::string mode) {
     std::random_shuffle(training_data.begin(), training_data.end());
     std::random_shuffle(validation_data.begin(), validation_data.end());
 
-    training_cost = model.train(training_data, learning_rate, epochs, C);
+    training_cost = model.train(training_data, learning_rate, epochs, model.C);
     validation_cost.push_back(model.cost(validation_data, "training"));
+    // std::cout << learning_rate << '\n';
+    // std::cout << model.C << '\n';
+    // std::cout << training_cost.back() << '\n';
+    // std::cout << validation_cost.back() << '\n';
+    // std::cout << '\n';
 
     learning_rate *= 10;
-    C *= 10;
   }
 
   // Replicate best case scenaro
@@ -65,11 +68,10 @@ void cross_validate(T& model, std::string dataset, int k, std::string mode) {
     }
   }
   int index = std::distance(validation_cost.begin(), find(validation_cost.begin(), validation_cost.end(), min));
-  learning_rate = 1e-10 * pow(10, index);
-  C = 1e-10 * pow(10, index);
+  learning_rate = 1e-13 * pow(10, index);
   epochs = 1000;
 
-  training_cost = model.train(training_data, learning_rate, epochs, C);
+  training_cost = model.train(training_data, learning_rate, epochs, model.C);
   validation_cost.push_back(model.cost(validation_data, "training"));
 
 
@@ -87,7 +89,7 @@ void cross_validate(T& model, std::string dataset, int k, std::string mode) {
   std::cout << "Cross Validation batches: " << k << '\n';
   std::cout << "Epochs: " << epochs << '\n';
   std::cout << "Learning rate: " << learning_rate << '\n';
-  std::cout << "Regularization: " << C << '\n';
+  std::cout << "Regularization: " << model.C << '\n';
   std::cout << "Final training cost: " << training_cost.back() << '\n';
   std::cout << "Final validation cost: " << validation_cost.back() << '\n';
   std::cout << "Time running: " << elapsed_seconds.count() << " seconds" << '\n';
@@ -187,5 +189,35 @@ void cross_validate_KNN(T& model, std::string dataset, int k, std::string mode) 
   for (int i=0; i<validation_cost.size()-1; i++) {
     file2 << validation_cost[i] << '\n';
   }
+
+}
+
+template <class T>
+void cross_validate_NB(T& model, std::string dataset) {
+  auto start = std::chrono::system_clock::now();
+
+  std::string data_name = "../data/" + dataset + "/train.csv";
+  data complete_data = load(data_name);
+
+  // Optional data scaling
+  complete_data = scale(complete_data);
+
+  model.train(complete_data);
+
+  auto stop = std::chrono::system_clock::now();
+  std::chrono::duration<double> elapsed_seconds = stop-start;
+  std::time_t end_time = std::chrono::system_clock::to_time_t(stop);
+
+  // Report
+  std::cout << "CROSS VALIDATION" << '\n';
+  std::cout << "Date: " << std::ctime(&end_time)<< '\n';
+  std::cout << "Dataset: " << dataset << '\n';
+  std::cout << "Model: " << model << '\n';
+  std::cout << "Scaling: Yes" << '\n';
+  std::cout << "Time running: " << elapsed_seconds.count() << " seconds" << '\n';
+
+  model.save();
+
+  std::cout << "--------------------------------------------------------------------------------" << '\n';
 
 }
