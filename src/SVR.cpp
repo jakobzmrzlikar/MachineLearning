@@ -19,20 +19,18 @@ double SVR::h(std::vector<double>& x) {
 
 double SVR::cost(data& training_data, std::string mode) {
     int m = training_data.size();
-    double tcost = 0.0;
-    double qcost = 0.0;
+    double cost = 0.0;
     for (int i=0; i<m; i++) {
         std::vector<double> x(training_data[i].begin(), training_data[i].end()-1);
         double y = training_data[i].back();
         double a = h(x);
-        tcost += HingeLoss::cost(a, y);
-        qcost += QuadraticCost::cost(a, y);
+        cost += QuadraticCost::cost(a, y);
     }
 
     if (mode == "training") {
-      return C*tcost+pow(norm(w), 2);
+      return C*cost/m+pow(norm(w), 2);
     } else if (mode == "regression") {
-      return qcost/m;
+      return cost/m;
     }
 }
 
@@ -67,9 +65,10 @@ std::vector<double> SVR::train(data& training_data, double learning_rate, int ep
         double y = training_data[i].back();
         double a = dot_product(w, x);
         double lambda = 1/(2*m*C);
-        error[0] += HingeLoss::error_b(lambda);
+        error[0] += QuadraticCost::error_b(a, y);
         for (int j=1; j<training_data[0].size(); j++) {
-          error[j] += HingeLoss::error_w(a, y, x[j-1], w[j], lambda);
+          error[j] += QuadraticCost::error_w(a, y, x[j-1])+w[j];
+          //the +w[j] term is the derivative of ||w||^2
         }
     }
 
