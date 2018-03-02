@@ -19,22 +19,17 @@ int main() {
   KNN knn;
   NaiveBayes nb;
   GaussianNaiveBayes gnb;
-  std::string dataset = "random_dataset";
+  std::string dataset = "hardware";
   std::string mode = "regression";
 
-  //cross_validate(lin, dataset, 10, mode);
-  // svr.C = 1e10;
-  // for (int i=0; i<10; i++) {
-  //   cross_validate(svr, dataset, 20, mode);
-  //   svr.C /= 10;
-  // }
   svr.C = 1e6;
-  cross_validate(svr, dataset, 10, mode);
-  //cross_validate_KNN(knn, dataset, 0, mode);
   //knn.K = 21;
-  //test(knn, dataset, mode);
-  test(svr, dataset, mode);
+  cross_validate(lin, dataset, 10, mode);
+  cross_validate(svr, dataset, 10, mode);
+  cross_validate_KNN(knn, dataset, 10, mode);
   test(lin, dataset, mode);
+  test(svr, dataset, mode);
+  test(knn, dataset, mode);
 
 
   return 0;

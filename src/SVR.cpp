@@ -76,7 +76,6 @@ std::vector<double> SVR::train(data& training_data, double learning_rate, int ep
     for (int i=0; i<w.size(); i++) {
         w[i] -= learning_rate * error[i];
     }
-    std::cout << w[0] << " " << w[1] << '\n';
 
   }
 
