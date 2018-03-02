@@ -28,7 +28,7 @@ double SVR::cost(data& training_data, std::string mode) {
     }
 
     if (mode == "training") {
-      return C*cost/m+pow(norm(w), 2);
+      return C*cost/m + 0.5*pow(norm(w), 2);
     } else if (mode == "regression") {
       return cost/m;
     }
@@ -48,9 +48,9 @@ std::vector<double> SVR::train(data& training_data, double learning_rate, int ep
     for (int i=0; i<epochs; i++){
         gradient_descent(training_data, learning_rate, m, C);
         training_cost.push_back(cost(training_data, "training"));
-        // if (training_cost[i+1] > training_cost[i]) { // early stopping
-        //   return training_cost;
-        // }
+        if (training_cost[i+1] > training_cost[i]) { // early stopping
+          return training_cost;
+        }
     }
 
     return training_cost;
@@ -67,8 +67,8 @@ std::vector<double> SVR::train(data& training_data, double learning_rate, int ep
         double lambda = 1/(2*m*C);
         error[0] += QuadraticCost::error_b(a, y);
         for (int j=1; j<training_data[0].size(); j++) {
-          error[j] += QuadraticCost::error_w(a, y, x[j-1])+w[j];
-          //the +w[j] term is the derivative of ||w||^2
+          error[j] += QuadraticCost::error_w(a, y, x[j-1]) + lambda*w[j];
+          //the +lambda*w[j] term is the derivative of ||w||^2
         }
     }
 
@@ -76,6 +76,7 @@ std::vector<double> SVR::train(data& training_data, double learning_rate, int ep
     for (int i=0; i<w.size(); i++) {
         w[i] -= learning_rate * error[i];
     }
+    std::cout << w[0] << " " << w[1] << '\n';
 
   }
 

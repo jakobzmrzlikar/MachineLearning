@@ -80,3 +80,17 @@ Dataset: random_dataset
 Model: KNN
 Test cost: 0.000680666
 --------------------------------------------------------------------------------
+TEST
+Date: Thu Mar  1 19:53:24 2018
+
+Dataset: random_dataset
+Model: SVR
+Test cost: 0.000576563
+--------------------------------------------------------------------------------
+TEST
+Date: Thu Mar  1 19:53:24 2018
+
+Dataset: random_dataset
+Model: Linear Regression
+Test cost: 0.000576532
+--------------------------------------------------------------------------------

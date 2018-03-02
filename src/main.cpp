@@ -28,7 +28,7 @@ int main() {
   //   cross_validate(svr, dataset, 20, mode);
   //   svr.C /= 10;
   // }
-  svr.C = 16;
+  svr.C = 1e6;
   cross_validate(svr, dataset, 10, mode);
   //cross_validate_KNN(knn, dataset, 0, mode);
   //knn.K = 21;

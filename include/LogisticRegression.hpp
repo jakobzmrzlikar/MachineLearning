@@ -13,6 +13,7 @@ public:
 
     // vector of weights
     std::vector<double> w;
+    double C;
 
     LogisticRegression();
 
