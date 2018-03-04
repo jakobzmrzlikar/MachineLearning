@@ -21,12 +21,15 @@ double GaussianNaiveBayes::h(std::vector<double>& x) {
     double new_probability = class_frequencies[i]/class_frequencies.size();
     // P(class==i)
     for (int j=0; j<x.size(); j++) {
-      new_probability *= pdf(x[j], means[j], standard_deviations[j])/class_frequencies[i];
+      std::cout << new_probability << '\n';
+      new_probability *= pdf(x[j], means[j], standard_deviations[j]);
+      new_probability /= class_frequencies[i];
       // P(pdf(x[j]) | class==i)
 
     }
 
     data_probability += new_probability;
+    std::cout << new_probability << " " << probability << '\n';
     if (new_probability > probability) {
       probability = new_probability;
       label = i;
@@ -34,7 +37,7 @@ double GaussianNaiveBayes::h(std::vector<double>& x) {
   }
   probability /= data_probability;
   // Calculate final probability, even though label is known before that.
-  std::cout << "Probability: " << probability*100 << '%' << '\n';
+  // std::cout << "Probability: " << probability*100 << '%' << '\n';
 
   return label;
 }
@@ -42,8 +45,8 @@ double GaussianNaiveBayes::h(std::vector<double>& x) {
 // train DOESN'T WORK for negative labels!
 void GaussianNaiveBayes::train(data& training_data) {
   double label;
-  means.resize(training_data[0].size());
-  standard_deviations.resize(training_data[0].size());
+  means.resize(training_data[0].size()-1);
+  standard_deviations.resize(training_data[0].size()-1);
 
   // Calculate means and class frequencies
   for (int i=0; i<training_data.size(); i++) {
@@ -79,6 +82,7 @@ double GaussianNaiveBayes::cost(data& training_data, std::string mode) {
       double y = training_data[i].back();
       double a = h(x);
       if (fabs(a-y)<0.5) correct_class++;
+      // std::cout << a << y << '\n';
   }
 
   if (mode == "classification") {
