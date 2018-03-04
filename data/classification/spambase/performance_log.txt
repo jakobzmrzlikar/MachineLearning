@@ -1,0 +1,66 @@
+CROSS VALIDATION
+Date: Sun Mar  4 19:45:22 2018
+
+Dataset: classification/spambase
+Model: Logistic Regression
+Mode: classification
+Scaling: Yes
+Cross Validation batches: 10
+Epochs: 1000
+Learning rate: 1
+Regularization: 6.91399e-310
+Final training cost: 0.361472
+Final validation cost: 0.367099
+Time running: 9.31512 seconds
+Model saved to path: ../data/saves/LogisticRegression.csv
+--------------------------------------------------------------------------------
+CROSS VALIDATION
+Date: Sun Mar  4 19:45:22 2018
+
+Dataset: classification/spambase
+Model: KNN
+Mode: classification
+Scaling: Yes
+Cross Validation batches: 0
+K: 1
+Final validation cost: 0
+Time running: 0.023952 seconds
+Model saved to path: ../data/saves/KNN.csv
+--------------------------------------------------------------------------------
+CROSS VALIDATION
+Date: Sun Mar  4 19:45:22 2018
+
+Dataset: classification/spambase
+Model: SVM
+Mode: classification
+Scaling: Yes
+Cross Validation batches: 10
+Epochs: 1000
+Learning rate: 1e-07
+Regularization: 1e+06
+Final training cost: 1536
+Final validation cost: 162
+Time running: 0.137999 seconds
+Model saved to path: ../data/saves/SVM.csv
+--------------------------------------------------------------------------------
+TEST
+Date: Sun Mar  4 19:45:22 2018
+
+Dataset: classification/spambase
+Model: SVM
+Test classification accuracy: 73.4783%
+--------------------------------------------------------------------------------
+TEST
+Date: Sun Mar  4 19:45:22 2018
+
+Dataset: classification/spambase
+Model: Logistic Regression
+Test classification accuracy: 88.7681%
+--------------------------------------------------------------------------------
+TEST
+Date: Sun Mar  4 19:45:26 2018
+
+Dataset: classification/spambase
+Model: KNN
+Test classification accuracy: 87.6812%
+--------------------------------------------------------------------------------
