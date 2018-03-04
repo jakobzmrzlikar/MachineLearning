@@ -1,0 +1,66 @@
+CROSS VALIDATION
+Date: Sun Mar  4 15:19:37 2018
+
+Dataset: classification/breast_cancer_wisconsin
+Model: Logistic Regression
+Mode: classification
+Scaling: Yes
+Cross Validation batches: 10
+Epochs: 1000
+Learning rate: 10
+Regularization: 6.91749e-310
+Final training cost: 0.0857475
+Final validation cost: 0.0213466
+Time running: 0.571026 seconds
+Model saved to path: ../data/saves/LogisticRegression.csv
+--------------------------------------------------------------------------------
+CROSS VALIDATION
+Date: Sun Mar  4 15:19:37 2018
+
+Dataset: classification/breast_cancer_wisconsin
+Model: KNN
+Mode: classification
+Scaling: Yes
+Cross Validation batches: 0
+K: 1
+Final validation cost: 0
+Time running: 0.00119994 seconds
+Model saved to path: ../data/saves/KNN.csv
+--------------------------------------------------------------------------------
+CROSS VALIDATION
+Date: Sun Mar  4 15:19:38 2018
+
+Dataset: classification/breast_cancer_wisconsin
+Model: SVM
+Mode: classification
+Scaling: Yes
+Cross Validation batches: 10
+Epochs: 1000
+Learning rate: 0.001
+Regularization: 1e+06
+Final training cost: 224.183
+Final validation cost: 94.1833
+Time running: 0.518573 seconds
+Model saved to path: ../data/saves/SVM.csv
+--------------------------------------------------------------------------------
+TEST
+Date: Sun Mar  4 15:19:38 2018
+
+Dataset: classification/breast_cancer_wisconsin
+Model: SVM
+Test classification accuracy: 89.5238%
+--------------------------------------------------------------------------------
+TEST
+Date: Sun Mar  4 15:19:38 2018
+
+Dataset: classification/breast_cancer_wisconsin
+Model: Logistic Regression
+Test classification accuracy: 97.1429%
+--------------------------------------------------------------------------------
+TEST
+Date: Sun Mar  4 15:19:38 2018
+
+Dataset: classification/breast_cancer_wisconsin
+Model: KNN
+Test classification accuracy: 96.1905%
+--------------------------------------------------------------------------------

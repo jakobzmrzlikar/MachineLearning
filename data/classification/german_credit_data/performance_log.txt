@@ -1,0 +1,66 @@
+CROSS VALIDATION
+Date: Sun Mar  4 15:23:08 2018
+
+Dataset: classification/german_credit_data
+Model: Logistic Regression
+Mode: classification
+Scaling: Yes
+Cross Validation batches: 10
+Epochs: 1000
+Learning rate: 1
+Regularization: 6.92674e-310
+Final training cost: 0.490034
+Final validation cost: 0.58424
+Time running: 1.18906 seconds
+Model saved to path: ../data/saves/LogisticRegression.csv
+--------------------------------------------------------------------------------
+CROSS VALIDATION
+Date: Sun Mar  4 15:23:08 2018
+
+Dataset: classification/german_credit_data
+Model: KNN
+Mode: classification
+Scaling: Yes
+Cross Validation batches: 0
+K: 1
+Final validation cost: 0
+Time running: 0.00278882 seconds
+Model saved to path: ../data/saves/KNN.csv
+--------------------------------------------------------------------------------
+CROSS VALIDATION
+Date: Sun Mar  4 15:23:08 2018
+
+Dataset: classification/german_credit_data
+Model: SVM
+Mode: classification
+Scaling: Yes
+Cross Validation batches: 10
+Epochs: 1000
+Learning rate: 0.0001
+Regularization: 1e+06
+Final training cost: 388.664
+Final validation cost: 40.6643
+Time running: 0.453579 seconds
+Model saved to path: ../data/saves/SVM.csv
+--------------------------------------------------------------------------------
+TEST
+Date: Sun Mar  4 15:23:08 2018
+
+Dataset: classification/german_credit_data
+Model: SVM
+Test classification accuracy: 71.6667%
+--------------------------------------------------------------------------------
+TEST
+Date: Sun Mar  4 15:23:08 2018
+
+Dataset: classification/german_credit_data
+Model: Logistic Regression
+Test classification accuracy: 72.3333%
+--------------------------------------------------------------------------------
+TEST
+Date: Sun Mar  4 15:23:08 2018
+
+Dataset: classification/german_credit_data
+Model: KNN
+Test classification accuracy: 71.3333%
+--------------------------------------------------------------------------------

@@ -1,0 +1,66 @@
+CROSS VALIDATION
+Date: Sun Mar  4 13:58:04 2018
+
+Dataset: regression/physicochemical_properties
+Model: Linear Regression
+Mode: regression
+Scaling: Yes
+Cross Validation batches: 10
+Epochs: 1000
+Learning rate: 1
+Regularization: 2.08441e-317
+Final training cost: 0.00192376
+Final validation cost: 0.00194975
+Time running: 30.0676 seconds
+Model saved to path: ../data/saves/LinearRegression.csv
+--------------------------------------------------------------------------------
+CROSS VALIDATION
+Date: Sun Mar  4 13:58:27 2018
+
+Dataset: regression/physicochemical_properties
+Model: SVR
+Mode: regression
+Scaling: Yes
+Cross Validation batches: 10
+Epochs: 1000
+Learning rate: 1e-05
+Regularization: 1e+06
+Final training cost: 1953.08
+Final validation cost: 1983.59
+Time running: 23.4084 seconds
+Model saved to path: ../data/saves/SVR.csv
+--------------------------------------------------------------------------------
+CROSS VALIDATION
+Date: Sun Mar  4 13:58:27 2018
+
+Dataset: regression/physicochemical_properties
+Model: KNN
+Mode: regression
+Scaling: Yes
+Cross Validation batches: 0
+K: 1
+Final validation cost: 0
+Time running: 0.0878723 seconds
+Model saved to path: ../data/saves/KNN.csv
+--------------------------------------------------------------------------------
+TEST
+Date: Sun Mar  4 13:58:27 2018
+
+Dataset: regression/physicochemical_properties
+Model: Linear Regression
+Test cost: 0.0129281
+--------------------------------------------------------------------------------
+TEST
+Date: Sun Mar  4 13:58:27 2018
+
+Dataset: regression/physicochemical_properties
+Model: SVR
+Test cost: 0.0133863
+--------------------------------------------------------------------------------
+TEST
+Date: Sun Mar  4 14:02:15 2018
+
+Dataset: regression/physicochemical_properties
+Model: KNN
+Test cost: 0.0118581
+--------------------------------------------------------------------------------

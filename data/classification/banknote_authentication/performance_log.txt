@@ -1,0 +1,66 @@
+CROSS VALIDATION
+Date: Sun Mar  4 15:03:23 2018
+
+Dataset: classification/banknote_authentication
+Model: SVM
+Mode: classification
+Scaling: Yes
+Cross Validation batches: 10
+Epochs: 1000
+Learning rate: 0.001
+Regularization: 1e+16
+Final training cost: 958
+Final validation cost: 148.559
+Time running: 0.506652 seconds
+Model saved to path: ../data/saves/SVM.csv
+--------------------------------------------------------------------------------
+CROSS VALIDATION
+Date: Sun Mar  4 15:03:24 2018
+
+Dataset: classification/banknote_authentication
+Model: Logistic Regression
+Mode: classification
+Scaling: Yes
+Cross Validation batches: 10
+Epochs: 1000
+Learning rate: 1
+Regularization: 6.93463e-310
+Final training cost: 0.170933
+Final validation cost: 0.155999
+Time running: 0.879216 seconds
+Model saved to path: ../data/saves/LogisticRegression.csv
+--------------------------------------------------------------------------------
+CROSS VALIDATION
+Date: Sun Mar  4 15:03:24 2018
+
+Dataset: classification/banknote_authentication
+Model: KNN
+Mode: classification
+Scaling: Yes
+Cross Validation batches: 0
+K: 1
+Final validation cost: 0
+Time running: 0.00200055 seconds
+Model saved to path: ../data/saves/KNN.csv
+--------------------------------------------------------------------------------
+TEST
+Date: Sun Mar  4 15:03:24 2018
+
+Dataset: classification/banknote_authentication
+Model: SVM
+Test classification accuracy: 87.3786%
+--------------------------------------------------------------------------------
+TEST
+Date: Sun Mar  4 15:03:24 2018
+
+Dataset: classification/banknote_authentication
+Model: Logistic Regression
+Test classification accuracy: 96.3592%
+--------------------------------------------------------------------------------
+TEST
+Date: Sun Mar  4 15:03:24 2018
+
+Dataset: classification/banknote_authentication
+Model: KNN
+Test classification accuracy: 99.7573%
+--------------------------------------------------------------------------------

@@ -1,0 +1,66 @@
+CROSS VALIDATION
+Date: Sun Mar  4 14:41:09 2018
+
+Dataset: classification/herbman_survival
+Model: Logistic Regression
+Mode: classification
+Scaling: Yes
+Cross Validation batches: 10
+Epochs: 1000
+Learning rate: 1
+Regularization: 6.93476e-310
+Final training cost: 0.535691
+Final validation cost: 0.524541
+Time running: 0.189821 seconds
+Model saved to path: ../data/saves/LogisticRegression.csv
+--------------------------------------------------------------------------------
+CROSS VALIDATION
+Date: Sun Mar  4 14:41:09 2018
+
+Dataset: classification/herbman_survival
+Model: SVM
+Mode: classification
+Scaling: Yes
+Cross Validation batches: 10
+Epochs: 1000
+Learning rate: 1e-07
+Regularization: 1e+06
+Final training cost: 110
+Final validation cost: 10
+Time running: 0.00247412 seconds
+Model saved to path: ../data/saves/SVM.csv
+--------------------------------------------------------------------------------
+CROSS VALIDATION
+Date: Sun Mar  4 14:41:09 2018
+
+Dataset: classification/herbman_survival
+Model: KNN
+Mode: classification
+Scaling: Yes
+Cross Validation batches: 0
+K: 1
+Final validation cost: 0
+Time running: 0.000405247 seconds
+Model saved to path: ../data/saves/KNN.csv
+--------------------------------------------------------------------------------
+TEST
+Date: Sun Mar  4 14:41:09 2018
+
+Dataset: classification/herbman_survival
+Model: Logistic Regression
+Test classification accuracy: 75%
+--------------------------------------------------------------------------------
+TEST
+Date: Sun Mar  4 14:41:09 2018
+
+Dataset: classification/herbman_survival
+Model: SVM
+Test classification accuracy: 76.087%
+--------------------------------------------------------------------------------
+TEST
+Date: Sun Mar  4 14:41:09 2018
+
+Dataset: classification/herbman_survival
+Model: KNN
+Test classification accuracy: 76.087%
+--------------------------------------------------------------------------------

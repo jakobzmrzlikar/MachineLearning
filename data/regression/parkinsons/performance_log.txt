@@ -1,0 +1,66 @@
+CROSS VALIDATION
+Date: Sun Mar  4 13:51:08 2018
+
+Dataset: regression/parkinsons
+Model: Linear Regression
+Mode: regression
+Scaling: Yes
+Cross Validation batches: 10
+Epochs: 1000
+Learning rate: 0.01
+Regularization: 2.08441e-317
+Final training cost: 0.00349897
+Final validation cost: 0.00632042
+Time running: 5.58922 seconds
+Model saved to path: ../data/saves/LinearRegression.csv
+--------------------------------------------------------------------------------
+CROSS VALIDATION
+Date: Sun Mar  4 13:51:13 2018
+
+Dataset: regression/parkinsons
+Model: SVR
+Mode: regression
+Scaling: Yes
+Cross Validation batches: 10
+Epochs: 1000
+Learning rate: 0.0001
+Regularization: 1e+06
+Final training cost: 2221.97
+Final validation cost: 4265.65
+Time running: 4.90201 seconds
+Model saved to path: ../data/saves/SVR.csv
+--------------------------------------------------------------------------------
+CROSS VALIDATION
+Date: Sun Mar  4 13:51:13 2018
+
+Dataset: regression/parkinsons
+Model: KNN
+Mode: regression
+Scaling: Yes
+Cross Validation batches: 0
+K: 1
+Final validation cost: 0
+Time running: 0.020491 seconds
+Model saved to path: ../data/saves/KNN.csv
+--------------------------------------------------------------------------------
+TEST
+Date: Sun Mar  4 13:51:13 2018
+
+Dataset: regression/parkinsons
+Model: Linear Regression
+Test cost: 0.00489903
+--------------------------------------------------------------------------------
+TEST
+Date: Sun Mar  4 13:51:13 2018
+
+Dataset: regression/parkinsons
+Model: SVR
+Test cost: 0.00375257
+--------------------------------------------------------------------------------
+TEST
+Date: Sun Mar  4 13:51:17 2018
+
+Dataset: regression/parkinsons
+Model: KNN
+Test cost: 0.00458645
+--------------------------------------------------------------------------------
