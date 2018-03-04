@@ -66,6 +66,7 @@ void cross_validate(T& model, std::string dataset, int k, std::string mode) {
   learning_rate = 1e-8 * pow(10, index);
   epochs = 1000;
 
+  model.w.clear();
   training_cost = model.train(training_data, learning_rate, epochs, model.C);
   validation_cost.push_back(model.cost(validation_data, "training"));
 
@@ -136,28 +137,27 @@ void cross_validate_KNN(T& model, std::string dataset, int k, std::string mode) 
       training_data.push_back(complete_data[j]);
     }
   }
-
   model.train(training_data);
   validation_cost.push_back(0);
 
-  // Cross validation
-  for (int i=0; i<k; i++) {
-    validation_cost.push_back(model.cost(validation_data, mode));
-    model.K += 2;
-  }
-
-  // Replicate best case scenaro
-  double min = validation_cost[0];
-  for (int i=1; i<validation_cost.size(); i++) {
-    if (std::isfinite(validation_cost[i]) and validation_cost[i] < min) {
-      min = validation_cost[i];
-    }
-  }
-  int index = std::distance(validation_cost.begin(), find(validation_cost.begin(), validation_cost.end(), min));
-  //model.K = 1 + 2 * index;
-
-  model.train(training_data);
-  validation_cost.push_back(model.cost(validation_data, mode));
+  // // Cross validation
+  // for (int i=0; i<k; i++) {
+  //   validation_cost.push_back(model.cost(validation_data, mode));
+  //   model.K += 2;
+  // }
+  //
+  // // Replicate best case scenaro
+  // double min = validation_cost[0];
+  // for (int i=1; i<validation_cost.size(); i++) {
+  //   if (std::isfinite(validation_cost[i]) and validation_cost[i] < min) {
+  //     min = validation_cost[i];
+  //   }
+  // }
+  // int index = std::distance(validation_cost.begin(), find(validation_cost.begin(), validation_cost.end(), min));
+  // //model.K = 1 + 2 * index;
+  //
+  // model.train(training_data);
+  // validation_cost.push_back(model.cost(validation_data, mode));
 
   auto stop = std::chrono::system_clock::now();
   std::chrono::duration<double> elapsed_seconds = stop-start;
