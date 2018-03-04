@@ -34,7 +34,7 @@ double GaussianNaiveBayes::h(std::vector<double>& x) {
   }
   probability /= data_probability;
   // Calculate final probability, even though label is known before that.
-  //std::cout << "Probability: " << probability*100 << '%' << '\n';
+  std::cout << "Probability: " << probability*100 << '%' << '\n';
 
   return label;
 }
@@ -116,7 +116,7 @@ void GaussianNaiveBayes::save(std::string filename) {
 }
 
 void GaussianNaiveBayes::load(std::string filename) {
-    std::string name = "../data/saves" + filename;
+    std::string name = "../data/saves/" + filename;
     std::ifstream file(name);
     std::string line;
     class_frequencies.clear();
