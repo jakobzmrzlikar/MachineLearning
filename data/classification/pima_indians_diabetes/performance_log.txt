@@ -1,5 +1,34 @@
 CROSS VALIDATION
-Date: Sun Mar  4 15:30:22 2018
+Date: Mon Mar  5 19:45:11 2018
+
+Dataset: classification/pima_indians_diabetes
+Model: Logistic Regression
+Mode: classification
+Scaling: Yes
+Cross Validation batches: 10
+Epochs: 1000
+Learning rate: 1
+Regularization: 6.94499e-310
+Final training cost: 0.465823
+Final validation cost: 0.495466
+Time running: 0.580089 seconds
+Model saved to path: ../data/saves/LogisticRegression.csv
+--------------------------------------------------------------------------------
+CROSS VALIDATION
+Date: Mon Mar  5 19:45:11 2018
+
+Dataset: classification/pima_indians_diabetes
+Model: KNN
+Mode: classification
+Scaling: Yes
+Cross Validation batches: 0
+K: 1
+Final validation cost: 0
+Time running: 0.00141935 seconds
+Model saved to path: ../data/saves/KNN.csv
+--------------------------------------------------------------------------------
+CROSS VALIDATION
+Date: Mon Mar  5 19:45:12 2018
 
 Dataset: classification/pima_indians_diabetes
 Model: SVM
@@ -7,31 +36,34 @@ Mode: classification
 Scaling: Yes
 Cross Validation batches: 10
 Epochs: 1000
-Learning rate: 0.001
+Learning rate: 1e-08
 Regularization: 1e+06
-Final training cost: 338.862
-Final validation cost: 64.8616
-Time running: 0.548071 seconds
+Final training cost: 344
+Final validation cost: 42
+Time running: 0.554729 seconds
 Model saved to path: ../data/saves/SVM.csv
 --------------------------------------------------------------------------------
 TEST
-Date: Sun Mar  4 15:30:22 2018
-
-Dataset: classification/pima_indians_diabetes
-Model: SVM
-Test classification accuracy: 68.2609%
---------------------------------------------------------------------------------
-TEST
-Date: Sun Mar  4 15:30:22 2018
+Date: Mon Mar  5 19:45:12 2018
 
 Dataset: classification/pima_indians_diabetes
 Model: Logistic Regression
 Test classification accuracy: 76.5217%
+Time running: 0.000677812 seconds
 --------------------------------------------------------------------------------
 TEST
-Date: Sun Mar  4 15:30:22 2018
+Date: Mon Mar  5 19:45:12 2018
+
+Dataset: classification/pima_indians_diabetes
+Model: SVM
+Test classification accuracy: 67.3913%
+Time running: 0.000628616 seconds
+--------------------------------------------------------------------------------
+TEST
+Date: Mon Mar  5 19:45:12 2018
 
 Dataset: classification/pima_indians_diabetes
 Model: KNN
 Test classification accuracy: 71.3043%
+Time running: 0.0563752 seconds
 --------------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 CROSS VALIDATION
-Date: Sun Mar  4 15:19:37 2018
+Date: Mon Mar  5 19:40:18 2018
 
 Dataset: classification/breast_cancer_wisconsin
 Model: Logistic Regression
@@ -8,14 +8,14 @@ Scaling: Yes
 Cross Validation batches: 10
 Epochs: 1000
 Learning rate: 10
-Regularization: 6.91749e-310
+Regularization: 6.93792e-310
 Final training cost: 0.0857475
 Final validation cost: 0.0213466
-Time running: 0.571026 seconds
+Time running: 0.576838 seconds
 Model saved to path: ../data/saves/LogisticRegression.csv
 --------------------------------------------------------------------------------
 CROSS VALIDATION
-Date: Sun Mar  4 15:19:37 2018
+Date: Mon Mar  5 19:40:18 2018
 
 Dataset: classification/breast_cancer_wisconsin
 Model: KNN
@@ -24,11 +24,11 @@ Scaling: Yes
 Cross Validation batches: 0
 K: 1
 Final validation cost: 0
-Time running: 0.00119994 seconds
+Time running: 0.00120335 seconds
 Model saved to path: ../data/saves/KNN.csv
 --------------------------------------------------------------------------------
 CROSS VALIDATION
-Date: Sun Mar  4 15:19:38 2018
+Date: Mon Mar  5 19:40:19 2018
 
 Dataset: classification/breast_cancer_wisconsin
 Model: SVM
@@ -40,27 +40,30 @@ Learning rate: 0.001
 Regularization: 1e+06
 Final training cost: 224.183
 Final validation cost: 94.1833
-Time running: 0.518573 seconds
+Time running: 0.515271 seconds
 Model saved to path: ../data/saves/SVM.csv
 --------------------------------------------------------------------------------
 TEST
-Date: Sun Mar  4 15:19:38 2018
-
-Dataset: classification/breast_cancer_wisconsin
-Model: SVM
-Test classification accuracy: 89.5238%
---------------------------------------------------------------------------------
-TEST
-Date: Sun Mar  4 15:19:38 2018
+Date: Mon Mar  5 19:40:19 2018
 
 Dataset: classification/breast_cancer_wisconsin
 Model: Logistic Regression
 Test classification accuracy: 97.1429%
+Time running: 0.000608443 seconds
 --------------------------------------------------------------------------------
 TEST
-Date: Sun Mar  4 15:19:38 2018
+Date: Mon Mar  5 19:40:19 2018
+
+Dataset: classification/breast_cancer_wisconsin
+Model: SVM
+Test classification accuracy: 89.5238%
+Time running: 0.000580031 seconds
+--------------------------------------------------------------------------------
+TEST
+Date: Mon Mar  5 19:40:19 2018
 
 Dataset: classification/breast_cancer_wisconsin
 Model: KNN
 Test classification accuracy: 96.1905%
+Time running: 0.0477072 seconds
 --------------------------------------------------------------------------------

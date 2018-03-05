@@ -1,5 +1,5 @@
 CROSS VALIDATION
-Date: Sun Mar  4 15:33:27 2018
+Date: Mon Mar  5 19:48:52 2018
 
 Dataset: classification/transfusion
 Model: Logistic Regression
@@ -8,14 +8,14 @@ Scaling: Yes
 Cross Validation batches: 10
 Epochs: 1000
 Learning rate: 0.1
-Regularization: 6.90297e-310
+Regularization: 6.9033e-310
 Final training cost: 0.534105
 Final validation cost: 0.470669
-Time running: 0.482343 seconds
+Time running: 0.479328 seconds
 Model saved to path: ../data/saves/LogisticRegression.csv
 --------------------------------------------------------------------------------
 CROSS VALIDATION
-Date: Sun Mar  4 15:33:27 2018
+Date: Mon Mar  5 19:48:52 2018
 
 Dataset: classification/transfusion
 Model: KNN
@@ -24,11 +24,11 @@ Scaling: Yes
 Cross Validation batches: 0
 K: 1
 Final validation cost: 0
-Time running: 0.000978425 seconds
+Time running: 0.000975551 seconds
 Model saved to path: ../data/saves/KNN.csv
 --------------------------------------------------------------------------------
 CROSS VALIDATION
-Date: Sun Mar  4 15:33:27 2018
+Date: Mon Mar  5 19:48:52 2018
 
 Dataset: classification/transfusion
 Model: SVM
@@ -40,27 +40,30 @@ Learning rate: 1e-08
 Regularization: 1e+06
 Final training cost: 242
 Final validation cost: 20
-Time running: 0.424651 seconds
+Time running: 0.425178 seconds
 Model saved to path: ../data/saves/SVM.csv
 --------------------------------------------------------------------------------
 TEST
-Date: Sun Mar  4 15:33:27 2018
-
-Dataset: classification/transfusion
-Model: SVM
-Test classification accuracy: 79.0179%
---------------------------------------------------------------------------------
-TEST
-Date: Sun Mar  4 15:33:27 2018
+Date: Mon Mar  5 19:48:52 2018
 
 Dataset: classification/transfusion
 Model: Logistic Regression
 Test classification accuracy: 79.4643%
+Time running: 0.000480661 seconds
 --------------------------------------------------------------------------------
 TEST
-Date: Sun Mar  4 15:33:27 2018
+Date: Mon Mar  5 19:48:52 2018
+
+Dataset: classification/transfusion
+Model: SVM
+Test classification accuracy: 79.0179%
+Time running: 0.000463177 seconds
+--------------------------------------------------------------------------------
+TEST
+Date: Mon Mar  5 19:48:52 2018
 
 Dataset: classification/transfusion
 Model: KNN
 Test classification accuracy: 81.6964%
+Time running: 0.0488445 seconds
 --------------------------------------------------------------------------------

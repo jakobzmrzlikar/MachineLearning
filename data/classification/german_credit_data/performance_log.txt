@@ -1,5 +1,5 @@
 CROSS VALIDATION
-Date: Sun Mar  4 15:23:08 2018
+Date: Mon Mar  5 19:42:56 2018
 
 Dataset: classification/german_credit_data
 Model: Logistic Regression
@@ -8,14 +8,14 @@ Scaling: Yes
 Cross Validation batches: 10
 Epochs: 1000
 Learning rate: 1
-Regularization: 6.92674e-310
+Regularization: 6.92635e-310
 Final training cost: 0.490034
 Final validation cost: 0.58424
-Time running: 1.18906 seconds
+Time running: 1.18726 seconds
 Model saved to path: ../data/saves/LogisticRegression.csv
 --------------------------------------------------------------------------------
 CROSS VALIDATION
-Date: Sun Mar  4 15:23:08 2018
+Date: Mon Mar  5 19:42:56 2018
 
 Dataset: classification/german_credit_data
 Model: KNN
@@ -24,11 +24,11 @@ Scaling: Yes
 Cross Validation batches: 0
 K: 1
 Final validation cost: 0
-Time running: 0.00278882 seconds
+Time running: 0.00287045 seconds
 Model saved to path: ../data/saves/KNN.csv
 --------------------------------------------------------------------------------
 CROSS VALIDATION
-Date: Sun Mar  4 15:23:08 2018
+Date: Mon Mar  5 19:42:57 2018
 
 Dataset: classification/german_credit_data
 Model: SVM
@@ -38,29 +38,32 @@ Cross Validation batches: 10
 Epochs: 1000
 Learning rate: 0.0001
 Regularization: 1e+06
-Final training cost: 388.664
-Final validation cost: 40.6643
-Time running: 0.453579 seconds
+Final training cost: 331.849
+Final validation cost: 45.8489
+Time running: 1.21364 seconds
 Model saved to path: ../data/saves/SVM.csv
 --------------------------------------------------------------------------------
 TEST
-Date: Sun Mar  4 15:23:08 2018
-
-Dataset: classification/german_credit_data
-Model: SVM
-Test classification accuracy: 71.6667%
---------------------------------------------------------------------------------
-TEST
-Date: Sun Mar  4 15:23:08 2018
+Date: Mon Mar  5 19:42:57 2018
 
 Dataset: classification/german_credit_data
 Model: Logistic Regression
 Test classification accuracy: 72.3333%
+Time running: 0.00131731 seconds
 --------------------------------------------------------------------------------
 TEST
-Date: Sun Mar  4 15:23:08 2018
+Date: Mon Mar  5 19:42:57 2018
+
+Dataset: classification/german_credit_data
+Model: SVM
+Test classification accuracy: 71.3333%
+Time running: 0.0012868 seconds
+--------------------------------------------------------------------------------
+TEST
+Date: Mon Mar  5 19:42:57 2018
 
 Dataset: classification/german_credit_data
 Model: KNN
 Test classification accuracy: 71.3333%
+Time running: 0.130155 seconds
 --------------------------------------------------------------------------------

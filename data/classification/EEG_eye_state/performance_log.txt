@@ -1,5 +1,5 @@
 CROSS VALIDATION
-Date: Sun Mar  4 19:47:27 2018
+Date: Mon Mar  5 19:40:53 2018
 
 Dataset: classification/EEG_eye_state
 Model: Logistic Regression
@@ -8,14 +8,14 @@ Scaling: Yes
 Cross Validation batches: 10
 Epochs: 1000
 Learning rate: 1
-Regularization: 6.94423e-310
+Regularization: 6.91817e-310
 Final training cost: 0.687236
 Final validation cost: 0.683973
-Time running: 13.9701 seconds
+Time running: 13.9862 seconds
 Model saved to path: ../data/saves/LogisticRegression.csv
 --------------------------------------------------------------------------------
 CROSS VALIDATION
-Date: Sun Mar  4 19:47:27 2018
+Date: Mon Mar  5 19:40:53 2018
 
 Dataset: classification/EEG_eye_state
 Model: KNN
@@ -24,11 +24,11 @@ Scaling: Yes
 Cross Validation batches: 0
 K: 1
 Final validation cost: 0
-Time running: 0.0381003 seconds
+Time running: 0.0436652 seconds
 Model saved to path: ../data/saves/KNN.csv
 --------------------------------------------------------------------------------
 CROSS VALIDATION
-Date: Sun Mar  4 19:47:27 2018
+Date: Mon Mar  5 19:41:07 2018
 
 Dataset: classification/EEG_eye_state
 Model: SVM
@@ -38,29 +38,32 @@ Cross Validation batches: 10
 Epochs: 1000
 Learning rate: 1e-06
 Regularization: 1e+06
-Final training cost: 8446
-Final validation cost: 906
-Time running: 0.230282 seconds
+Final training cost: 8446.95
+Final validation cost: 906.955
+Time running: 14.1257 seconds
 Model saved to path: ../data/saves/SVM.csv
 --------------------------------------------------------------------------------
 TEST
-Date: Sun Mar  4 19:47:27 2018
-
-Dataset: classification/EEG_eye_state
-Model: SVM
-Test classification accuracy: 54.4504%
---------------------------------------------------------------------------------
-TEST
-Date: Sun Mar  4 19:47:27 2018
+Date: Mon Mar  5 19:41:07 2018
 
 Dataset: classification/EEG_eye_state
 Model: Logistic Regression
 Test classification accuracy: 45.5719%
+Time running: 0.018427 seconds
 --------------------------------------------------------------------------------
 TEST
-Date: Sun Mar  4 19:47:52 2018
+Date: Mon Mar  5 19:41:07 2018
+
+Dataset: classification/EEG_eye_state
+Model: SVM
+Test classification accuracy: 54.4504%
+Time running: 0.0181046 seconds
+--------------------------------------------------------------------------------
+TEST
+Date: Mon Mar  5 19:41:32 2018
 
 Dataset: classification/EEG_eye_state
 Model: KNN
-Test classification accuracy: 54.4504%
+Test classification accuracy: 54.4726%
+Time running: 24.7358 seconds
 --------------------------------------------------------------------------------
