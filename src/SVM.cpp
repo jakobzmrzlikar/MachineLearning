@@ -55,9 +55,9 @@ std::vector<double> SVM::train(data& training_data, double learning_rate, int ep
     for (int i=0; i<epochs; i++){
         gradient_descent(training_data, learning_rate, m, C);
         training_cost.push_back(cost(training_data, "training"));
-        if (training_cost[i+1] < training_cost[i]) { // early stopping
-          return training_cost;
-        }
+        // if (training_cost[i+1] < training_cost[i]) { // early stopping
+        //   return training_cost;
+        // }
     }
 
     return training_cost;

@@ -21,7 +21,6 @@ double GaussianNaiveBayes::h(std::vector<double>& x) {
     double new_probability = class_frequencies[i]/class_frequencies.size();
     // P(class==i)
     for (int j=0; j<x.size(); j++) {
-      std::cout << new_probability << '\n';
       new_probability *= pdf(x[j], means[j], standard_deviations[j]);
       new_probability /= class_frequencies[i];
       // P(pdf(x[j]) | class==i)
@@ -29,7 +28,6 @@ double GaussianNaiveBayes::h(std::vector<double>& x) {
     }
 
     data_probability += new_probability;
-    std::cout << new_probability << " " << probability << '\n';
     if (new_probability > probability) {
       probability = new_probability;
       label = i;
@@ -65,10 +63,11 @@ void GaussianNaiveBayes::train(data& training_data) {
   // Calculate standard deviations
   for (int i=0; i<training_data.size(); i++) {
     for (int j=0; j<training_data[0].size()-1; j++) {
-      standard_deviations[j] += pow((training_data[i][j]-means[j]), 2)/training_data.size();
+      standard_deviations[j] += pow((training_data[i][j]-means[j]), 2);
     }
 
     for (int j=0; j<standard_deviations.size(); j++) {
+      standard_deviations[j] /= training_data.size();
       standard_deviations[j] = sqrt(standard_deviations[j]);
     }
   }
@@ -82,7 +81,7 @@ double GaussianNaiveBayes::cost(data& training_data, std::string mode) {
       double y = training_data[i].back();
       double a = h(x);
       if (fabs(a-y)<0.5) correct_class++;
-      // std::cout << a << y << '\n';
+      // std::cout << a << " " << y << '\n';
   }
 
   if (mode == "classification") {
@@ -90,8 +89,9 @@ double GaussianNaiveBayes::cost(data& training_data, std::string mode) {
   }
 }
 
-double GaussianNaiveBayes::pdf(double x, double mean, double sd) {
-  return (1/(sqrt(2*M_PI)*sd)) * exp(-((x-pow(mean, 2))/(2*pow(sd, 2))));
+double GaussianNaiveBayes::pdf(double x, double mean, double sd) {\
+  std::cout << (1/(sqrt(2*M_PI)*sd)) * exp(-0.5*(pow((x-mean)/sd, 2))) << '\n';
+  return (1/(sqrt(2*M_PI)*sd)) * exp(-0.5*(pow((x-mean)/sd, 2)));
 }
 
 void GaussianNaiveBayes::save(std::string filename) {

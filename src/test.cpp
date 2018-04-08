@@ -12,6 +12,7 @@ typedef std::vector<std::vector<double>> data;
 template <typename T>
 void test(T& model, std::string dataset, std::string mode) {
 
+  auto start = std::chrono::system_clock::now();
   model.load();
 
   std::string data_name = "../data/" + dataset + "/test.csv";
@@ -22,7 +23,9 @@ void test(T& model, std::string dataset, std::string mode) {
 
   double cost = model.cost(test_data, mode);
 
-  std::time_t end_time = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+  auto stop = std::chrono::system_clock::now();
+  std::chrono::duration<double> elapsed_seconds = stop-start;
+  std::time_t end_time = std::chrono::system_clock::to_time_t(stop);
 
   // Report
   std::cout << "TEST" << '\n';
@@ -34,6 +37,8 @@ void test(T& model, std::string dataset, std::string mode) {
   } else if (mode == "classification") {
     std::cout << "Test classification accuracy: " << cost << '%' << '\n';
   }
+  std::cout << "Time running: " << elapsed_seconds.count() << " seconds" << '\n';
+
   std::cout << "--------------------------------------------------------------------------------" << '\n';
 
 }
