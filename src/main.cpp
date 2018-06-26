@@ -19,19 +19,19 @@ int main() {
   KNN knn;
   NaiveBayes nb;
   GaussianNaiveBayes gnb;
-  std::string dataset = "auto_mpg";
-  std::string mode = "regression";
+  std::string dataset = "EEG_eye_state";
+  std::string mode = "classification";
   dataset = mode + "/" + dataset;
 
   svm.C = 1e6;
-  cross_validate(lin, dataset, 10, mode);
+  cross_validate(logit, dataset, 10, mode);
   cross_validate_KNN(knn, dataset, 0, mode);
-  cross_validate(svr, dataset, 10, mode);
+  cross_validate(svm, dataset, 10, mode);
 
   knn.K = 21;
-  test(lin, dataset, mode);
+  test(logit, dataset, mode);
   test(knn, dataset, mode);
-  test(svr, dataset, mode);
+  test(svm, dataset, mode);
 
   return 0;
 }
