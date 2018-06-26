@@ -20,7 +20,7 @@ void cross_validate(T& model, std::string dataset, int k, std::string mode) {
   int epochs = 100;
   double learning_rate = 1e-8;
 
-  std::string data_name = "../data/" + dataset + "/train.csv";
+  std::string data_name = "../data/" + dataset + "/train6.csv";
 
   data complete_data = load(data_name);
 

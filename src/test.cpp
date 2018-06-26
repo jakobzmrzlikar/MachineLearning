@@ -13,7 +13,6 @@ template <typename T>
 void test(T& model, std::string dataset, std::string mode) {
 
   auto start = std::chrono::system_clock::now();
-  model.load();
 
   std::string data_name = "../data/" + dataset + "/test.csv";
   data test_data = load(data_name);
