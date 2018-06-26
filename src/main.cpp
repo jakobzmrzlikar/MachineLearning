@@ -19,7 +19,7 @@ int main() {
   KNN knn;
   NaiveBayes nb;
   GaussianNaiveBayes gnb;
-  std::string dataset = "";
+  std::string dataset = "EEG_eye_state";
   std::string mode = "classification";
   dataset = mode + "/" + dataset;
 
